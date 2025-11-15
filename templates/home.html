@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Jeremy Klein — LOSP Packet{% endblock %}
+
+{% block content %}
+  <div class="section-title">Digital Materials Packet</div>
+  <p>
+    Welcome — this site hosts my application materials for a potential California Law Office Study Program
+    apprenticeship, with a focus on supporting SGV small and immigrant-owned businesses.
+  </p>
+
+  <p>Use the navigation above, or start here:</p>
+  <p style="margin-top: 1rem;">
+    <a class="btn" href="{% url 'resume' %}">View Résumé</a>
+    <a class="btn secondary" href="{% url 'writing_samples' %}">View Writing Samples</a>
+    <a class="btn secondary" href="{% url 'losp' %}">View LOSP Docs</a>
+  </p>
+{% endblock %}

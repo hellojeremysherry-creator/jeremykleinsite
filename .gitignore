@@ -1,0 +1,15 @@
+# Virtual envs
+venv/
+.venv/
+
+# Django stuff
+__pycache__/
+*.py[cod]
+db.sqlite3
+
+# Collected static files (we'll let Render build these)
+staticfiles/
+
+# IDE files
+.idea/
+.vscode/

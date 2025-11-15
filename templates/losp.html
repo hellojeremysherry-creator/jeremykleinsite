@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}LOSP Docs — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Law Office Study Program (LOSP) Materials</div>
+
+  <p>
+    Below is a one-page overview of California’s Law Office Study Program as it relates to a potential
+    apprenticeship in your office, along with links to the official State Bar forms and requirements.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/LOSP_Overview_OnePager.pdf' %}" download>
+      Download LOSP Overview (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem; margin-bottom:1.5rem;">
+    <embed
+      src="{% static 'docs/LOSP_Overview_OnePager.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+
+  <p style="font-size:0.9rem; color:#4b5563;">
+    For convenience, I’m happy to handle the logistics and State Bar filings (Form A, supervised study
+    reports, and exam schedule) if we decide an apprenticeship is a good fit.
+  </p>
+{% endblock %}

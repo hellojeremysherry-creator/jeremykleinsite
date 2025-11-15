@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Writing Samples — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Writing Sample — Pregnancy Discrimination Act Memo</div>
+  <p>
+    This sample is an objective e-memo analyzing whether an employer’s accommodation practices under
+    the Pregnancy Discrimination Act were applied equally to similarly limited employees.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/LOSP_Writing_Sample.pdf' %}" download>
+      Download Writing Sample (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/LOSP_Writing_Sample.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+{% endblock %}
