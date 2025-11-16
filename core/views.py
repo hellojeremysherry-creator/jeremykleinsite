@@ -11,3 +11,7 @@ def writing_samples_view(request):
 
 def losp_view(request):
     return render(request, "losp.html")
+
+def packet_view(request):
+    """Page that contains the full LOSP materials packet / buttons."""
+    return render(request, "packet.html")

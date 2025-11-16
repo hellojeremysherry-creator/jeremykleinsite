@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Digital LOSP Packet — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div style="display:flex;flex-wrap:wrap;gap:1.5rem;">
+    <section style="flex: 1 1 260px;min-width:0;">
+      <div class="section-title">Digital Materials Packet</div>
+      <p>
+        Thank you for taking the time to review my materials. This page gathers everything you may want
+        to see in one place as you consider a potential Law Office Study Program apprenticeship.
+      </p>
+      <p>
+        I recently completed my 1L year at Hofstra Law and returned home to the San Gabriel Valley to
+        pursue California’s LOSP path. My first career was nearly fifteen years as a content producer,
+        working closely with small and regulated businesses on clear communication and client service.
+      </p>
+      <p>
+        I’m especially interested in supporting family-owned and immigrant-run businesses with practical,
+        day-to-day legal needs—contracts, employment questions, and operational risk.
+      </p>
+
+      <div class="btn-row">
+        <a class="btn" href="{% url 'resume' %}">View Résumé</a>
+        <a class="btn secondary" href="{% url 'writing_samples' %}">View Writing Sample</a>
+        <a class="btn secondary" href="{% url 'losp' %}">View LOSP Overview</a>
+      </div>
+    </section>
+
+    <aside style="flex: 0 0 260px;max-width:320px;min-width:220px;border-left:1px solid #27272f;padding-left:1.2rem;">
+      <div class="section-title" style="margin-bottom:0.4rem;">At a glance</div>
+      <ul style="padding-left:1.1rem;margin:0;font-size:0.9rem;line-height:1.55;color:#e5e7eb;">
+        <li>1L completed at Hofstra Law (Legal Writing &amp; Analysis, Torts, Contracts, Crim, Civ Pro).</li>
+        <li>Based in the San Gabriel Valley; flexible on in-office days/hours.</li>
+        <li>Comfortable with research, drafting, and client-facing communication.</li>
+      </ul>
+      <p style="margin-top:0.9rem;font-size:0.85rem;color:#6b7280;">
+        If it’s helpful, I’m glad to tailor my schedule and study plan to the needs of your office and your clients.
+      </p>
+    </aside>
+  </div>
+{% endblock %}
