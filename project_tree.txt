@@ -28,6 +28,7 @@ jeremykleinsite
 │   │   
 │   │   urlpatterns = [
 │   │       path("", views.home, name="home"),
+│   │       path("packet/", views.packet_view, name="packet"),  # 👈 new page with the docs
 │   │       path("resume/", views.resume_view, name="resume"),
 │   │       path("writing-samples/", views.writing_samples_view, name="writing_samples"),
 │   │       path("losp/", views.losp_view, name="losp"),
@@ -46,25 +47,13 @@ jeremykleinsite
 │       
 │       def losp_view(request):
 │           return render(request, "losp.html")
+│       
+│       def packet_view(request):
+│           """Page that contains the full LOSP materials packet / buttons."""
+│           return render(request, "packet.html")
 ├── jeremykleinsite
 │   ├── __init__.py
 │   ├── asgi.py
-│   │   """
-│   │   ASGI config for jeremykleinsite project.
-│   │   
-│   │   It exposes the ASGI callable as a module-level variable named ``application``.
-│   │   
-│   │   For more information on this file, see
-│   │   https://docs.djangoproject.com/en/5.2/howto/deployment/asgi/
-│   │   """
-│   │   
-│   │   import os
-│   │   
-│   │   from django.core.asgi import get_asgi_application
-│   │   
-│   │   os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'jeremykleinsite.settings')
-│   │   
-│   │   application = get_asgi_application()
 │   ├── settings.py
 │   │   """
 │   │   Django settings for jeremykleinsite project.
@@ -205,22 +194,6 @@ jeremykleinsite
 │   │       path("", include("core.urls")),  # 👈 send root URL to core app
 │   │   ]
 │   └── wsgi.py
-│       """
-│       WSGI config for jeremykleinsite project.
-│       
-│       It exposes the WSGI callable as a module-level variable named ``application``.
-│       
-│       For more information on this file, see
-│       https://docs.djangoproject.com/en/5.2/howto/deployment/wsgi/
-│       """
-│       
-│       import os
-│       
-│       from django.core.wsgi import get_wsgi_application
-│       
-│       os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'jeremykleinsite.settings')
-│       
-│       application = get_wsgi_application()
 ├── manage.py
 │   #!/usr/bin/env python
 │   """Django's command-line utility for administrative tasks."""
@@ -268,19 +241,18 @@ jeremykleinsite
 │   │   <head>
 │   │     <meta charset="utf-8">
 │   │     <title>{% block title %}Jeremy Klein — LOSP{% endblock %}</title>
-│   │     <meta name="viewport" content="width=device-width, initial-scale=0">
+│   │     <meta name="viewport" content="width=device-width, initial-scale=1">
 │   │     {% load static %}
 │   │     <style>
 │   │       :root {
-│   │         --bg: #f3f4f6;
-│   │         --bg-card: #2f2f2f;
+│   │         --bg: #0b0b0b;
+│   │         --bg-card: #1f1f1f;
 │   │         --fg: #ffffff;
-│   │         --muted: #6b7280;
-│   │         --accent: #2563eb;
-│   │         --accent-soft: #dbeafe;
-│   │         --border-subtle: #e5e7eb;
-│   │         --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.16);
-│   │         --radius-lg: 1.25rem;
+│   │         --muted: #9ca3af;
+│   │         --accent: #f9fafb;
+│   │         --border-subtle: #27272f;
+│   │         --shadow-soft: 0 26px 70px rgba(0, 0, 0, 0.7);
+│   │         --radius-lg: 1.35rem;
 │   │         --radius-pill: 999px;
 │   │       }
 │   │   
@@ -289,9 +261,11 @@ jeremykleinsite
 │   │       }
 │   │   
 │   │       body {
-│   │         margin: 10px;
+│   │         margin: 0;
+│   │         padding: 10px;
 │   │         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-│   │         background: radial-gradient(circle at top left, #000000, #292929 50%, #393939);
+│   │         background:
+│   │           radial-gradient(circle at top left, #111827, #020617 55%, #0b0b0b);
 │   │         color: var(--fg);
 │   │       }
 │   │   
@@ -328,9 +302,9 @@ jeremykleinsite
 │   │       }
 │   │   
 │   │       .name {
-│   │         font-size: 1.5rem;
+│   │         font-size: 1.6rem;
 │   │         font-weight: 650;
-│   │         letter-spacing: 0.01em;
+│   │         letter-spacing: 0.02em;
 │   │       }
 │   │   
 │   │       .badge-row {
@@ -339,15 +313,16 @@ jeremykleinsite
 │   │         gap: 0.4rem;
 │   │       }
 │   │   
+│   │       /* small header pill */
 │   │       .badge {
-│   │         padding: 10.18rem 10.7rem;
+│   │         padding: 0.29rem 0.9rem;
 │   │         border-radius: var(--radius-pill);
-│   │         border: 2px solid rgb(211, 211, 211);
-│   │         background: rgba(0, 0, 0, 0.85);
-│   │         font-size: 0.69rem;
+│   │         border: 1px solid rgba(249, 250, 251, 0.2);
+│   │         background: rgba(15, 23, 42, 0.9);
+│   │         font-size: 0.7rem;
 │   │         text-transform: uppercase;
-│   │         letter-spacing: 0.10em;
-│   │         color: rgb(255, 255, 255);
+│   │         letter-spacing: 0.14em;
+│   │         color: #e5e7eb;
 │   │         font-weight: 600;
 │   │       }
 │   │   
@@ -380,27 +355,27 @@ jeremykleinsite
 │   │         padding: 0.4rem 0.95rem;
 │   │         border-radius: var(--radius-pill);
 │   │         border: 1px solid transparent;
-│   │         color: #374151;
-│   │         background: rgba(255, 255, 255, 0.9);
-│   │         backdrop-filter: blur(6px);
-│   │         transition: background 0.12s ease, border-color 0.12s ease, transform 0.08s ease,
-│   │           box-shadow 0.08s ease, color 0.12s ease;
+│   │         color: #e5e7eb;
+│   │         background: rgba(15, 23, 42, 0.92);
+│   │         backdrop-filter: blur(8px);
+│   │         transition: background 0.12s ease, border-color 0.12s ease,
+│   │           transform 0.08s ease, box-shadow 0.08s ease, color 0.12s ease;
 │   │       }
 │   │   
 │   │       nav a:hover {
 │   │         border-color: var(--accent);
-│   │         background: var(--accent);
-│   │         color: #f9fafb;
-│   │         box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+│   │         background: #f9fafb;
+│   │         color: #020617;
+│   │         box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
 │   │         transform: translateY(-1px);
 │   │       }
 │   │   
 │   │       .card {
 │   │         background: var(--bg-card);
 │   │         border-radius: var(--radius-lg);
-│   │         border: 1px solid rgba(229, 231, 235, 0.9);
+│   │         border: 1px solid var(--border-subtle);
 │   │         box-shadow: var(--shadow-soft);
-│   │         padding: 1.6rem 1.7rem 1.8rem;
+│   │         padding: 1.8rem 1.9rem 2rem;
 │   │       }
 │   │   
 │   │       .section-title {
@@ -428,26 +403,26 @@ jeremykleinsite
 │   │         gap: 0.35rem;
 │   │         padding: 0.6rem 1.1rem;
 │   │         border-radius: var(--radius-pill);
-│   │         border: 1px solid var(--accent);
-│   │         background: var(--accent);
-│   │         color: #f9fafb;
+│   │         border: 1px solid #e5e7eb;
+│   │         background: #f9fafb;
+│   │         color: #020617;
 │   │         font-size: 0.9rem;
 │   │         font-weight: 500;
 │   │         text-decoration: none;
-│   │         transition: background 0.12s ease, color 0.12s ease, transform 0.08s ease,
-│   │           box-shadow 0.08s ease;
+│   │         transition: background 0.12s ease, color 0.12s ease,
+│   │           transform 0.08s ease, box-shadow 0.08s ease;
 │   │         white-space: nowrap;
 │   │       }
 │   │   
 │   │       .btn.secondary {
-│   │         background: #f9fafb;
-│   │         color: var(--fg);
-│   │         border-color: var(--border-subtle);
+│   │         background: transparent;
+│   │         color: #e5e7eb;
+│   │         border-color: #4b5563;
 │   │       }
 │   │   
 │   │       .btn:hover {
 │   │         transform: translateY(-1px);
-│   │         box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+│   │         box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
 │   │       }
 │   │   
 │   │       iframe, embed {
@@ -458,8 +433,130 @@ jeremykleinsite
 │   │       footer {
 │   │         margin-top: 1.4rem;
 │   │         font-size: 0.8rem;
-│   │         color: #9ca3af;
+│   │         color: #6b7280;
 │   │         text-align: left;
+│   │       }
+│   │   
+│   │       /* ───── Hero / oval for the home page ───── */
+│   │   
+│   │       .hero-card {
+│   │         display: flex;
+│   │         flex-direction: column;
+│   │         align-items: center;
+│   │         gap: 1.75rem;
+│   │         text-align: center;
+│   │       }
+│   │   
+│   │       .hero-heading {
+│   │         display: flex;
+│   │         flex-direction: column;
+│   │         gap: 0.15rem;
+│   │       }
+│   │   
+│   │       .hero-name {
+│   │         font-size: 2rem;
+│   │         font-weight: 650;
+│   │         letter-spacing: 0.08em;
+│   │         text-transform: uppercase;
+│   │       }
+│   │   
+│   │       .hero-sub {
+│   │         font-size: 0.95rem;
+│   │         color: var(--muted);
+│   │       }
+│   │   
+│   │       .hero-meta {
+│   │         font-size: 0.9rem;
+│   │         color: var(--muted);
+│   │         display: flex;
+│   │         flex-wrap: wrap;
+│   │         justify-content: center;
+│   │         gap: 0.3rem;
+│   │       }
+│   │   
+│   │       .hero-meta a {
+│   │         text-decoration: none;
+│   │         border-bottom: 1px dotted rgba(148, 163, 184, 0.7);
+│   │       }
+│   │   
+│   │       .hero-pill {
+│   │         position: relative;
+│   │         display: flex;
+│   │         flex-direction: column;
+│   │         align-items: center;
+│   │         justify-content: center;
+│   │         width: min(480px, 80vw);
+│   │         height: min(230px, 45vw);
+│   │         border-radius: var(--radius-pill);
+│   │         border: 1.6px solid rgba(243, 244, 246, 0.9);
+│   │         background: radial-gradient(circle at top left, #020617, #18181b 60%, #000000);
+│   │         box-shadow:
+│   │           0 0 0 1px rgba(15, 23, 42, 0.7),
+│   │           0 40px 90px rgba(0, 0, 0, 0.9);
+│   │         cursor: pointer;
+│   │         text-decoration: none;
+│   │         overflow: hidden;
+│   │         animation: pillPulse 4.5s ease-in-out infinite;
+│   │       }
+│   │   
+│   │       .hero-pill::before {
+│   │         content: "";
+│   │         position: absolute;
+│   │         inset: 0;
+│   │         background: radial-gradient(circle at top, rgba(148, 163, 184, 0.25), transparent 60%);
+│   │         mix-blend-mode: screen;
+│   │         opacity: 0.7;
+│   │         pointer-events: none;
+│   │       }
+│   │   
+│   │       .hero-pill-label {
+│   │         position: relative;
+│   │         z-index: 1;
+│   │         font-size: 0.86rem;
+│   │         letter-spacing: 0.38em;
+│   │         text-transform: uppercase;
+│   │         font-weight: 600;
+│   │         color: #f9fafb;
+│   │         text-align: center;
+│   │       }
+│   │   
+│   │       .hero-pill-note {
+│   │         position: relative;
+│   │         z-index: 1;
+│   │         margin-top: 0.65rem;
+│   │         font-size: 0.8rem;
+│   │         text-transform: uppercase;
+│   │         letter-spacing: 0.18em;
+│   │         color: rgba(209, 213, 219, 0.9);
+│   │       }
+│   │   
+│   │       .hero-pill:focus-visible {
+│   │         outline: 2px solid #dbeafe;
+│   │         outline-offset: 5px;
+│   │       }
+│   │   
+│   │       .hero-pill:hover {
+│   │         animation-play-state: paused;
+│   │         background: radial-gradient(circle at top left, #020617, #111827 60%, #000000);
+│   │         transform: translateY(-2px) scale(1.01);
+│   │         box-shadow:
+│   │           0 0 0 1px rgba(59, 130, 246, 0.3),
+│   │           0 44px 110px rgba(15, 23, 42, 0.95);
+│   │       }
+│   │   
+│   │       @keyframes pillPulse {
+│   │         0% {
+│   │           transform: scale(1);
+│   │           background: radial-gradient(circle at top left, #020617, #18181b 60%, #000000);
+│   │         }
+│   │         50% {
+│   │           transform: scale(1.015);
+│   │           background: radial-gradient(circle at top left, #020617, #262626 55%, #020617);
+│   │         }
+│   │         100% {
+│   │           transform: scale(1);
+│   │           background: radial-gradient(circle at top left, #020617, #18181b 60%, #000000);
+│   │         }
 │   │       }
 │   │   
 │   │       @media (max-width: 720px) {
@@ -475,7 +572,7 @@ jeremykleinsite
 │   │           text-align: left;
 │   │         }
 │   │         .card {
-│   │           padding: 1.35rem 1.25rem 1.55rem;
+│   │           padding: 1.5rem 1.4rem 1.7rem;
 │   │         }
 │   │       }
 │   │     </style>
@@ -486,11 +583,10 @@ jeremykleinsite
 │   │       <header>
 │   │         <div class="identity">
 │   │           <div class="badge-row">
-│   │             <span class="badge">California LOSP Candidate</span>
 │   │           </div>
 │   │           <div class="name">Jeremy Klein</div>
 │   │           <div class="tagline">
-│   │             Law Office Study Program — focused on SGV small &amp; immigrant-owned businesses
+│   │             LOSP Candidate — focused on SGV small &amp; immigrant-owned businesses
 │   │           </div>
 │   │         </div>
 │   │         <div class="contact">
@@ -519,45 +615,28 @@ jeremykleinsite
 │   │   </html>
 │   ├── home.html
 │   │   {% extends "base.html" %}
-│   │   {% block title %}Jeremy Klein — LOSP Materials{% endblock %}
+│   │   {% block title %}California LOSP Candidate — Jeremy Klein{% endblock %}
 │   │   
 │   │   {% block content %}
-│   │     <div style="display:flex;flex-wrap:wrap;gap:1.5rem;">
-│   │       <section style="flex: 1 1 260px;min-width:0;">
-│   │         <div class="section-title">Digital Materials Packet</div>
-│   │         <p>
-│   │           Thank you for taking the time to review my materials. This page gathers everything you may want
-│   │           to see in one place as you consider a potential Law Office Study Program apprenticeship.
-│   │         </p>
-│   │         <p>
-│   │           I recently completed my 1L year at Hofstra Law and returned home to the San Gabriel Valley to
-│   │           pursue California’s LOSP path. My first career was nearly fifteen years as a content producer,
-│   │           working closely with small and regulated businesses on clear communication and client service.
-│   │         </p>
-│   │         <p>
-│   │           I’m especially interested in supporting family-owned and immigrant-run businesses with practical,
-│   │           day-to-day legal needs—contracts, employment questions, and operational risk.
-│   │         </p>
+│   │     <div class="hero-card">
+│   │       <div class="hero-heading">
+│   │         <div class="hero-name">Jeremy Klein</div>
+│   │         <div class="hero-sub">Law Office Study Program — San Gabriel Valley</div>
+│   │       </div>
 │   │   
-│   │         <div class="btn-row">
-│   │           <a class="btn" href="{% url 'resume' %}">View Résumé</a>
-│   │           <a class="btn secondary" href="{% url 'writing_samples' %}">View Writing Sample</a>
-│   │           <a class="btn secondary" href="{% url 'losp' %}">View LOSP Overview</a>
-│   │         </div>
-│   │       </section>
+│   │       <!-- Big animated oval; clicking anywhere opens the docs packet -->
+│   │       <a href="{% url 'packet' %}" class="hero-pill">
+│   │         <span class="hero-pill-label">California LOSP Candidate</span>
+│   │         <span class="hero-pill-note">Click to open digital packet</span>
+│   │       </a>
 │   │   
-│   │       <aside style="flex: 0 0 260px;max-width:320px;min-width:220px;border-left:1px solid #e5e7eb;padding-left:1.2rem;">
-│   │         <div class="section-title" style="margin-bottom:0.4rem;">At a glance</div>
-│   │         <ul style="padding-left:1.1rem;margin:0;font-size:0.9rem;line-height:1.55;color:#232629;">
-│   │           <li>1L completed at Hofstra Law (Legal Writing &amp; Analysis, Torts, Contracts, Crim, Civ Pro).</li>
-│   │           <li>Based in the San Gabriel Valley; flexible on in-office days/hours.</li>
-│   │           <li>Comfortable with research, drafting, and client-facing communication.</li>
-│   │         </ul>
-│   │         <p style="margin-top:0.9rem;font-size:0.85rem;color:#9ca3af;">
-│   │           If it’s helpful, I’m glad to tailor my schedule and study plan to the needs of your office and
-│   │           your clients.
-│   │         </p>
-│   │       </aside>
+│   │       <div class="hero-meta">
+│   │         <span>Duarte, CA</span>
+│   │         <span>•</span>
+│   │         <span>631-365-4554</span>
+│   │         <span>•</span>
+│   │         <a href="mailto:supjeremyklein@gmail.com">supjeremyklein@gmail.com</a>
+│   │       </div>
 │   │     </div>
 │   │   {% endblock %}
 │   ├── losp.html
@@ -592,6 +671,48 @@ jeremykleinsite
 │   │       For convenience, I’m happy to handle the logistics and State Bar filings (Form A, supervised study
 │   │       reports, and exam schedule) if we decide an apprenticeship is a good fit.
 │   │     </p>
+│   │   {% endblock %}
+│   ├── packet.html
+│   │   {% extends "base.html" %}
+│   │   {% block title %}Digital LOSP Packet — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div style="display:flex;flex-wrap:wrap;gap:1.5rem;">
+│   │       <section style="flex: 1 1 260px;min-width:0;">
+│   │         <div class="section-title">Digital Materials Packet</div>
+│   │         <p>
+│   │           Thank you for taking the time to review my materials. This page gathers everything you may want
+│   │           to see in one place as you consider a potential Law Office Study Program apprenticeship.
+│   │         </p>
+│   │         <p>
+│   │           I recently completed my 1L year at Hofstra Law and returned home to the San Gabriel Valley to
+│   │           pursue California’s LOSP path. My first career was nearly fifteen years as a content producer,
+│   │           working closely with small and regulated businesses on clear communication and client service.
+│   │         </p>
+│   │         <p>
+│   │           I’m especially interested in supporting family-owned and immigrant-run businesses with practical,
+│   │           day-to-day legal needs—contracts, employment questions, and operational risk.
+│   │         </p>
+│   │   
+│   │         <div class="btn-row">
+│   │           <a class="btn" href="{% url 'resume' %}">View Résumé</a>
+│   │           <a class="btn secondary" href="{% url 'writing_samples' %}">View Writing Sample</a>
+│   │           <a class="btn secondary" href="{% url 'losp' %}">View LOSP Overview</a>
+│   │         </div>
+│   │       </section>
+│   │   
+│   │       <aside style="flex: 0 0 260px;max-width:320px;min-width:220px;border-left:1px solid #27272f;padding-left:1.2rem;">
+│   │         <div class="section-title" style="margin-bottom:0.4rem;">At a glance</div>
+│   │         <ul style="padding-left:1.1rem;margin:0;font-size:0.9rem;line-height:1.55;color:#e5e7eb;">
+│   │           <li>1L completed at Hofstra Law (Legal Writing &amp; Analysis, Torts, Contracts, Crim, Civ Pro).</li>
+│   │           <li>Based in the San Gabriel Valley; flexible on in-office days/hours.</li>
+│   │           <li>Comfortable with research, drafting, and client-facing communication.</li>
+│   │         </ul>
+│   │         <p style="margin-top:0.9rem;font-size:0.85rem;color:#6b7280;">
+│   │           If it’s helpful, I’m glad to tailor my schedule and study plan to the needs of your office and your clients.
+│   │         </p>
+│   │       </aside>
+│   │     </div>
 │   │   {% endblock %}
 │   ├── resume.html
 │   │   {% extends "base.html" %}
