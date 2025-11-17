@@ -5,21 +5,53 @@
 
 {% block content %}
   <div class="section-title">Writing Sample — Appellate Brief (Pregnancy Discrimination Act)</div>
-
   <p>
     This sample is an appellate brief addressing claims under the Pregnancy Discrimination Act,
     with a focus on standards of review, preservation of issues on appeal, and application of
-    prior accommodation practices to similarly limited employees.
+    prior accommodation practices to similarly limited employees
   </p>
 
   <p>
+    <a class="btn" href="{% static 'docs/Appellate Brief - PDA.pdf' %}" download>
+      Download Appellate Brief (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/Appellate Brief - PDA.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+      <p>
     <a class="btn" href="{% static 'docs/Appellate Brief - PDA.docx' %}" download>
       Download Appellate Brief (DOCX)
     </a>
   </p>
 
   <p class="muted" style="margin-top:0.9rem;">
-    The brief is provided as a Word document for easier annotation and review.
-    I’m happy to supply a PDF version on request.
+    The brief is also provided as a Word document for easier annotation and review.
   </p>
 {% endblock %}
+
+{#{% block content %}#}
+{#  <div class="section-title">Writing Sample — Appellate Brief (Pregnancy Discrimination Act)</div>#}
+{##}
+{#  <p>#}
+{#    This sample is an appellate brief addressing claims under the Pregnancy Discrimination Act,#}
+{#    with a focus on standards of review, preservation of issues on appeal, and application of#}
+{#    prior accommodation practices to similarly limited employees.#}
+{#  </p>#}
+{##}
+{#  <p>#}
+{#    <a class="btn" href="{% static 'docs/Appellate Brief - PDA.docx' %}" download>#}
+{#      Download Appellate Brief (DOCX)#}
+{#    </a>#}
+{#  </p>#}
+{##}
+{#  <p class="muted" style="margin-top:0.9rem;">#}
+{#    The brief is provided as a Word document for easier annotation and review.#}
+{#    I’m happy to supply a PDF version on request.#}
+{#  </p>#}
+{#{% endblock %}#}
