@@ -2,9 +2,6 @@ jeremykleinsite
 ├── core
 │   ├── __init__.py
 │   ├── admin.py
-│   │   from django.contrib import admin
-│   │   
-│   │   # Register your models here.
 │   ├── apps.py
 │   │   from django.apps import AppConfig
 │   │   
@@ -31,6 +28,7 @@ jeremykleinsite
 │   │       path("packet/", views.packet_view, name="packet"),  # 👈 new page with the docs
 │   │       path("resume/", views.resume_view, name="resume"),
 │   │       path("writing-samples/", views.writing_samples_view, name="writing_samples"),
+│   │       path("writing-samples/appellate-brief/", views.appellate_brief_view, name="appellate_brief"),  # 👈 NEW
 │   │       path("losp/", views.losp_view, name="losp"),
 │   │   ]
 │   └── views.py
@@ -51,6 +49,10 @@ jeremykleinsite
 │       def packet_view(request):
 │           """Page that contains the full LOSP materials packet / buttons."""
 │           return render(request, "packet.html")
+│       
+│       def appellate_brief_view(request):
+│           """Writing sample: Appellate brief focused on the Pregnancy Discrimination Act."""
+│           return render(request, "appellate_brief.html")  # 👈 NEW
 ├── jeremykleinsite
 │   ├── __init__.py
 │   ├── asgi.py
@@ -219,6 +221,11 @@ jeremykleinsite
 │       main()
 ├── static
 │   └── docs
+│       ├── bar
+│       ├── losp
+│       ├── misc
+│       ├── resume
+│       └── writing
 ├── staticfiles
 │   ├── admin
 │   │   ├── css
@@ -235,6 +242,43 @@ jeremykleinsite
 │   │           └── xregexp
 │   └── docs
 ├── templates
+│   ├── appellate_brief.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}Appellate Brief — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">Writing Sample — Appellate Brief (Pregnancy Discrimination Act)</div>
+│   │     <p>
+│   │       This sample is an appellate brief addressing claims under the Pregnancy Discrimination Act,
+│   │       with a focus on standards of review, preservation of issues on appeal, and application of
+│   │       prior accommodation practices to similarly limited employees
+│   │     </p>
+│   │   
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/Appellate Brief - PDA.pdf' %}" download>
+│   │         Download Appellate Brief (PDF)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/Appellate Brief - PDA.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │         <p>
+│   │       <a class="btn" href="{% static 'docs/Appellate Brief - PDA.docx' %}" download>
+│   │         Download Appellate Brief (DOCX)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <p class="muted" style="margin-top:0.9rem;">
+│   │       The brief is also provided as a Word document for easier annotation and review.
+│   │     </p>
+│   │   {% endblock %}
 │   ├── base.html
 │   │   <!doctype html>
 │   │   <html lang="en">
@@ -598,7 +642,8 @@ jeremykleinsite
 │   │       <nav>
 │   │         <a href="{% url 'home' %}">Home</a>
 │   │         <a href="{% url 'resume' %}">Résumé</a>
-│   │         <a href="{% url 'writing_samples' %}">Writing Samples</a>
+│   │         <a href="{% url 'writing_samples' %}">Writing Sample — Memo</a>
+│   │         <a href="{% url 'appellate_brief' %}">Writing Sample — Appellate Brief</a>
 │   │         <a href="{% url 'losp' %}">LOSP Docs</a>
 │   │       </nav>
 │   │   
@@ -757,7 +802,7 @@ jeremykleinsite
 │       
 │         <p>
 │           <a class="btn" href="{% static 'docs/LOSP_Writing_Sample.pdf' %}" download>
-│             Download Writing Sample (PDF)
+│             Download E-Memo Sample (PDF)
 │           </a>
 │         </p>
 │       

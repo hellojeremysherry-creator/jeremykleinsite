@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block title %}Digital LOSP Packet — Jeremy Klein{% endblock %}
 
 {% block content %}
@@ -21,21 +23,34 @@
 
       <div class="btn-row">
         <a class="btn" href="{% url 'resume' %}">View Résumé</a>
-        <a class="btn secondary" href="{% url 'writing_samples' %}">View Writing Sample</a>
-        <a class="btn secondary" href="{% url 'losp' %}">View LOSP Overview</a>
+        <a class="btn secondary" href="{% url 'writing_samples' %}">View Writing Sample — Memo</a>
+        <a class="btn secondary" href="{% url 'appellate_brief' %}">View Writing Sample — Appellate Brief</a>
       </div>
     </section>
 
-    <aside style="flex: 0 0 260px;max-width:320px;min-width:220px;border-left:1px solid #27272f;padding-left:1.2rem;">
-      <div class="section-title" style="margin-bottom:0.4rem;">At a glance</div>
+    <aside style="flex: 0 0 320px;max-width:360px;min-width:240px;border-left:1px solid #27272f;padding-left:1.2rem;">
+      <div class="section-title" style="margin-bottom:0.4rem;">Key LOSP Documents</div>
       <ul style="padding-left:1.1rem;margin:0;font-size:0.9rem;line-height:1.55;color:#e5e7eb;">
-        <li>1L completed at Hofstra Law (Legal Writing &amp; Analysis, Torts, Contracts, Crim, Civ Pro).</li>
-        <li>Based in the San Gabriel Valley; flexible on in-office days/hours.</li>
-        <li>Comfortable with research, drafting, and client-facing communication.</li>
+        <li>
+          <a href="{% static 'docs/losp/LOSP_OnePager.pdf' %}" download>LOSP Overview One-Pager (PDF)</a>
+        </li>
+        <li>
+          <a href="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}" download>Year 1 Study Plan (PDF)</a>
+        </li>
+        <li>
+          <a href="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}" download>
+            Weekly Schedule — Tues/Thu (PDF)
+          </a>
+        </li>
+        <li>
+          <a href="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}" download>
+            Weekly Schedule — With Weekends (PDF)
+          </a>
+        </li>
+        <li style="margin-top:0.4rem;">
+          <a href="{% url 'losp' %}">View full LOSP document set →</a>
+        </li>
       </ul>
-      <p style="margin-top:0.9rem;font-size:0.85rem;color:#6b7280;">
-        If it’s helpful, I’m glad to tailor my schedule and study plan to the needs of your office and your clients.
-      </p>
     </aside>
   </div>
 {% endblock %}
