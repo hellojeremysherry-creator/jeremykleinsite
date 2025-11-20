@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Business & Professions Code §§ 6060–6061 — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Business &amp; Professions Code §§ 6060–6061</div>
+  <p>
+    These sections of the California Business and Professions Code set out the statutory requirements
+    for admission to the practice of law, including the LOSP pathway under § 6060(e)(2)(B) and the
+    first-year law students’ examination requirement and exemption under § 6060(h).
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/bar/BAR CODE.pdf' %}" download>
+      Download B&amp;P Code §§ 6060–6061 (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/bar/BAR CODE.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+
+  <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+    <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Admissions Portal Status Definitions — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">State Bar Admissions Portal — Status Definitions</div>
+  <p>
+    This reference explains the meaning of various case status labels (e.g., Drafted, Submitted,
+    Pending Internal, Approved) used in the State Bar’s Applicant Portal.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/misc/Portal Definitions.pdf' %}" download>
+      Download Portal Status Definitions (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/misc/Portal Definitions.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+
+  <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+    <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Admissions Rules — Title 4, Division 1 — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Rules of the State Bar — Title 4, Division 1 (Admissions)</div>
+  <p>
+    This document contains the official California State Bar Admissions Rules, including Rule 4.29,
+    which governs law office and judge’s chambers study for the LOSP.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/bar/Rules_Title4_Div1-Adm-Prac-Law.pdf' %}" download>
+      Download Admissions Rules (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/bar/Rules_Title4_Div1-Adm-Prac-Law.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+
+  <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+    <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+  </div>
+{% endblock %}

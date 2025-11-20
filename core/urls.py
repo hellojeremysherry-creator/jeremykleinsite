@@ -24,5 +24,16 @@ urlpatterns = [
     path("losp/study-plan/", views.losp_studyplan_view, name="losp_studyplan"),
     path("losp/schedule/tues-thurs/", views.losp_schedule_tth_view, name="losp_schedule_tth"),
     path("losp/schedule/weekends/", views.losp_schedule_weekend_view, name="losp_schedule_weekend"),
+
+# NEW: Section C — Official LOSP forms
+    path("losp/forms/notice-intent/", views.losp_notice_intent_view, name="losp_notice_intent"),
+    path("losp/forms/supervising-attorney/", views.losp_supervisor_decl_view, name="losp_supervisor_decl"),
+    path("losp/forms/semiannual-cover/", views.losp_semi_cover_view, name="losp_semi_cover"),
+    path("losp/forms/semiannual-detail/", views.losp_semi_detail_view, name="losp_semi_detail"),
+
+    # NEW: Section D — Legal authority
+    path("losp/rules/title4/", views.losp_rules_title4_view, name="losp_rules_title4"),
+    path("losp/rules/bpc-6060/", views.losp_bpc_6060_view, name="losp_bpc_6060"),
+    path("losp/portal-defs/", views.losp_portal_defs_view, name="losp_portal_defs"),
 ]
 

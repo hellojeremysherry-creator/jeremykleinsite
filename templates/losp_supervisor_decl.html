@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Supervising Attorney Declaration — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Supervising Attorney / Judge Declaration</div>
+  <p>
+    This form is completed by the supervising attorney or judge to confirm eligibility and
+    acceptance of responsibility under the LOSP, including personal supervision and periodic reporting.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/bar/LOSIntent.0516_R.pdf' %}" download>
+      Download Supervising Attorney Declaration (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/bar/LOSIntent.0516_R.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+
+  <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+    <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+  </div>
+{% endblock %}

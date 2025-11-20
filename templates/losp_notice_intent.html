@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}LOSP Notice of Intent — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Notice of Intent to Study in a Law Office or Judge’s Chambers</div>
+  <p>
+    This is the official State Bar form used to initiate participation in the Law Office Study Program.
+    It is filed within 30 days of beginning supervised law study in a law office or judge’s chambers,
+    together with the required fee.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/bar/LOSPNoticeIntent.pdf' %}" download>
+      Download Notice of Intent (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/bar/LOSPNoticeIntent.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+
+  <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+    <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+  </div>
+{% endblock %}

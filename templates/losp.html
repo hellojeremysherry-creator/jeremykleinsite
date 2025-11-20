@@ -58,19 +58,19 @@
 <h3 style="margin-top:2.2rem;">C. Official State Bar LOSP Forms</h3>
 
 <ul class="pdf-list">
-  <li><a href="{% static 'docs/bar/LOSPNoticeIntent.pdf' %}" download>Notice of Intent (PDF)</a></li>
-  <li><a href="{% static 'docs/bar/LOSIntent.0516_R.pdf' %}" download>Supervising Attorney Declaration</a></li>
-  <li><a href="{% static 'docs/bar/LawOfficeStudyReportCover.0516_R.pdf' %}" download>Semiannual Report Cover Sheet</a></li>
-  <li><a href="{% static 'docs/bar/LOS-Semi-Annual-Report-Form.pdf' %}" download>Semiannual Report Detail Form</a></li>
+  <li><a href="{% url 'losp_notice_intent' %}">Notice of Intent (Form &amp; Payment Coupon)</a></li>
+  <li><a href="{% url 'losp_supervisor_decl' %}">Supervising Attorney / Judge Declaration</a></li>
+  <li><a href="{% url 'losp_semi_cover' %}">Law Office Study Semiannual Report Cover Sheet</a></li>
+  <li><a href="{% url 'losp_semi_detail' %}">Semiannual Report Detail Form</a></li>
 </ul>
 
 <!-- D. Legal Authority -->
 <h3 style="margin-top:2.2rem;">D. Legal Authority (Rules & Statutes)</h3>
 
 <ul class="pdf-list">
-  <li><a href="{% static 'docs/bar/Rules_Title4_Div1-Adm-Prac-Law.pdf' %}" download>Rules of the State Bar — Title 4, Division 1</a></li>
-  <li><a href="{% static 'docs/bar/BAR CODE.pdf' %}" download>B&P Code §§ 6060–6061</a></li>
-  <li><a href="{% static 'docs/misc/Portal Definitions.pdf' %}" download>Portal Status Definitions</a></li>
+  <li><a href="{% url 'losp_rules_title4' %}">Rules of the State Bar — Title 4, Division 1 (Admissions Rules)</a></li>
+  <li><a href="{% url 'losp_bpc_6060' %}">Business &amp; Professions Code §§ 6060–6061</a></li>
+  <li><a href="{% url 'losp_portal_defs' %}">State Bar Admissions Portal — Status Definitions</a></li>
 </ul>
 
 {% endblock %}

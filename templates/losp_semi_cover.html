@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Semiannual Report Cover Sheet — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Law Office Study — Semiannual Report Cover Sheet</div>
+  <p>
+    This cover sheet accompanies each six-month report submitted under the LOSP. It summarizes the
+    study period, hours, and primary materials, and is filed together with the written monthly exams
+    and the required fee.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/bar/LawOfficeStudyReportCover.0516_R.pdf' %}" download>
+      Download Semiannual Report Cover Sheet (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/bar/LawOfficeStudyReportCover.0516_R.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+
+  <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+    <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+  </div>
+{% endblock %}

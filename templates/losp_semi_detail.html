@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Semiannual Report Detail Form — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Law Office Study — Semiannual Report Detail Form</div>
+  <p>
+    This form is used to provide detailed information on weekly hours, supervision, and materials
+    studied during each six-month LOSP period, as required by Rule 4.29.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/bar/LOS-Semi-Annual-Report-Form.pdf' %}" download>
+      Download Semiannual Report Detail Form (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/bar/LOS-Semi-Annual-Report-Form.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+
+  <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+    <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+  </div>
+{% endblock %}
