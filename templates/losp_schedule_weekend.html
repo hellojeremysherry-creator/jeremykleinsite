@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Weekly Schedule — Weekend-Integrated LOSP — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Weekly Schedule — Weekend-Integrated Study</div>
+  <p>
+    This draft schedule combines two weekday office days with weekend deep-work blocks, showing how
+    I can comfortably exceed the LOSP hour requirements while maintaining consistent availability
+    for your clients and matters.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}" download>
+      Download Weekly Schedule — Weekends Included (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+{% endblock %}

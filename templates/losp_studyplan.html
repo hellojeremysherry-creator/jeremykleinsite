@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}LOSP Year 1 Study Plan — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Year 1 LOSP Study Plan</div>
+  <p>
+    This study plan outlines how I’d structure Year 1 of the LOSP, including a standard 1L-equivalent
+    track and an elevated 2L-level track if advanced standing is approved. It balances doctrinal
+    study, supervised work, and strong exam integration.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}" download>
+      Download Study Plan (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+{% endblock %}

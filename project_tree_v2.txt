@@ -3,12 +3,6 @@ jeremykleinsite
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
-│   │   from django.apps import AppConfig
-│   │   
-│   │   
-│   │   class CoreConfig(AppConfig):
-│   │       default_auto_field = 'django.db.models.BigAutoField'
-│   │       name = 'core'
 │   ├── migrations
 │   │   └── __init__.py
 │   ├── models.py
@@ -20,7 +14,17 @@ jeremykleinsite
 │   │   urlpatterns = [
 │   │       path("", views.home, name="home"),
 │   │       path("packet/", views.packet_view, name="packet"),  # 👈 new page with the docs
+│   │       path("materials/", views.materials_view, name="materials"),
 │   │       path("resume/", views.resume_view, name="resume"),
+│   │   
+│   │       # (Optional: keep these for direct links or future redirects)
+│   │       path("writing-samples/", views.writing_samples_view, name="writing_samples"),
+│   │       path(
+│   │           "writing-samples/appellate-brief/",
+│   │           views.appellate_brief_view,
+│   │           name="appellate_brief",
+│   │       ),
+│   │   
 │   │       path("writing-samples/", views.writing_samples_view, name="writing_samples"),
 │   │       path("writing-samples/appellate-brief/", views.appellate_brief_view, name="appellate_brief"),  # 👈 NEW
 │   │       path("losp/", views.losp_view, name="losp"),
@@ -47,6 +51,10 @@ jeremykleinsite
 │       def appellate_brief_view(request):
 │           """Writing sample: Appellate brief focused on the Pregnancy Discrimination Act."""
 │           return render(request, "appellate_brief.html")  # 👈 NEW
+│       
+│       def materials_view(request):
+│           """Hub page for résumé + writing samples."""
+│           return render(request, "materials.html")
 ├── jeremykleinsite
 │   ├── __init__.py
 │   ├── asgi.py
@@ -191,28 +199,6 @@ jeremykleinsite
 │   │   ]
 │   └── wsgi.py
 ├── manage.py
-│   #!/usr/bin/env python
-│   """Django's command-line utility for administrative tasks."""
-│   import os
-│   import sys
-│   
-│   
-│   def main():
-│       """Run administrative tasks."""
-│       os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'jeremykleinsite.settings')
-│       try:
-│           from django.core.management import execute_from_command_line
-│       except ImportError as exc:
-│           raise ImportError(
-│               "Couldn't import Django. Are you sure it's installed and "
-│               "available on your PYTHONPATH environment variable? Did you "
-│               "forget to activate a virtual environment?"
-│           ) from exc
-│       execute_from_command_line(sys.argv)
-│   
-│   
-│   if __name__ == '__main__':
-│       main()
 ├── static
 │   └── docs
 │       ├── bar
@@ -635,9 +621,7 @@ jeremykleinsite
 │   │   
 │   │       <nav>
 │   │         <a href="{% url 'home' %}">Home</a>
-│   │         <a href="{% url 'resume' %}">Résumé</a>
-│   │         <a href="{% url 'writing_samples' %}">Writing Sample — Memo</a>
-│   │         <a href="{% url 'appellate_brief' %}">Writing Sample — Appellate Brief</a>
+│   │         <a href="{% url 'materials' %}">Résumé &amp; Writing Samples</a>
 │   │         <a href="{% url 'losp' %}">LOSP Docs</a>
 │   │       </nav>
 │   │   
@@ -755,6 +739,94 @@ jeremykleinsite
 │   │   </ul>
 │   │   
 │   │   {% endblock %}
+│   ├── materials.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}Résumé & Writing Samples — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │   
+│   │   <div class="section-title">Résumé &amp; Writing Samples</div>
+│   │   
+│   │   <p class="muted" style="margin-bottom:1.4rem;">
+│   │     This page collects my résumé and two writing samples (an objective memorandum and an appellate brief)
+│   │     in one place for easier review.
+│   │   </p>
+│   │   
+│   │       <div class="btn-row" style="margin-bottom:1.4rem; justify-content: center;">
+│   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'resume' %}">View Résumé</a>
+│   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'writing_samples' %}">View Writing Sample — Memo</a>
+│   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'appellate_brief' %}">View Writing Sample — Appellate Brief</a>
+│   │       </div>
+│   │   
+│   │   <!-- A. Résumé -->
+│   │   <h3 style="margin-top:1.4rem;">A. Résumé</h3>
+│   │   <p style="font-size:0.9rem;color:#e5e7eb;">
+│   │     Current résumé highlighting my 1L coursework, prior professional experience, and focus on
+│   │     supporting small and immigrant-owned businesses in the San Gabriel Valley.
+│   │   </p>
+│   │   
+│   │   <div class="pdf-block">
+│   │     <p class="pdf-label">Résumé (PDF)</p>
+│   │     <embed
+│   │       src="{% static 'docs/Jeremy Klein Resume.pdf' %}#view=FitH"
+│   │       type="application/pdf"
+│   │       width="100%"
+│   │       height="650px">
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/Jeremy Klein Resume.pdf' %}" download>
+│   │         Download Résumé (PDF)
+│   │       </a>
+│   │     </p>
+│   │   </div>
+│   │   
+│   │   <!-- B. Writing Sample — E-Memo -->
+│   │   <h3 style="margin-top:2.0rem;">B. Writing Sample — Objective E-Memo</h3>
+│   │   <p style="font-size:0.9rem;color:#e5e7eb;">
+│   │     An objective e-memo analyzing Pregnancy Discrimination Act accommodation practices, with emphasis on
+│   │     case comparison, statutory interpretation, and neutral application of facts to law.
+│   │   </p>
+│   │   
+│   │   <div class="pdf-block">
+│   │     <p class="pdf-label">PDA E-Memo (PDF)</p>
+│   │     <embed
+│   │       src="{% static 'docs/E-Memo.pdf' %}#view=FitH"
+│   │       type="application/pdf"
+│   │       width="100%"
+│   │       height="650px">
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/E-Memo.pdf' %}" download>
+│   │         Download E-Memo (PDF)
+│   │       </a>
+│   │     </p>
+│   │   </div>
+│   │   
+│   │   <!-- C. Writing Sample — Appellate Brief -->
+│   │   <h3 style="margin-top:2.0rem;">C. Writing Sample — Appellate Brief</h3>
+│   │   <p style="font-size:0.9rem;color:#e5e7eb;">
+│   │     An appellate brief addressing Pregnancy Discrimination Act issues, focusing on standards of review,
+│   │     preserved error, and comparison between accommodation of pregnant and non-pregnant employees.
+│   │   </p>
+│   │   
+│   │   <div class="pdf-block">
+│   │     <p class="pdf-label">Appellate Brief (PDF)</p>
+│   │     <embed
+│   │       src="{% static 'docs/Appellate Brief - PDA.pdf' %}#view=FitH"
+│   │       type="application/pdf"
+│   │       width="100%"
+│   │       height="650px">
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/Appellate Brief - PDA.pdf' %}" download>
+│   │         Download Appellate Brief (PDF)
+│   │       </a>
+│   │       <a class="btn secondary" href="{% static 'docs/Appellate Brief - PDA.docx' %}" download>
+│   │         Download Brief (DOCX)
+│   │       </a>
+│   │     </p>
+│   │   </div>
+│   │   
+│   │   {% endblock %}
 │   ├── packet.html
 │   │   {% extends "base.html" %}
 │   │   {% load static %}
@@ -780,9 +852,8 @@ jeremykleinsite
 │   │         </p>
 │   │   
 │   │         <div class="btn-row">
-│   │           <a class="btn" href="{% url 'resume' %}">View Résumé</a>
-│   │           <a class="btn secondary" href="{% url 'writing_samples' %}">View Writing Sample — Memo</a>
-│   │           <a class="btn secondary" href="{% url 'appellate_brief' %}">View Writing Sample — Appellate Brief</a>
+│   │           <a class="btn" href="{% url 'materials' %}">View Résumé & Writing Samples</a>
+│   │           <a class="btn" href="{% url 'losp' %}">View LOS Program Docs</a>
 │   │         </div>
 │   │       </section>
 │   │   

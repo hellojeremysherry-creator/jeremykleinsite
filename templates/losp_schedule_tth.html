@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Weekly Schedule — Tues/Thurs LOSP — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Weekly Schedule — Tues/Thurs Office Presence</div>
+  <p>
+    This draft schedule shows a two-day in-office structure (Tuesday and Thursday), with integrated
+    supervision, research, drafting, and exam preparation, meeting the LOSP minimums of 18 hours
+    of study and 5 hours of personal supervision each week.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri_wrapped.pdf' %}" download>
+      Download Weekly Schedule — Tues/Thurs (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri_wrapped.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+{% endblock %}

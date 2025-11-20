@@ -23,3 +23,21 @@ def appellate_brief_view(request):
 def materials_view(request):
     """Hub page for résumé + writing samples."""
     return render(request, "materials.html")
+
+# NEW LOSP doc pages
+
+def losp_overview_view(request):
+    """Standalone page for the LOSP Overview One-Pager."""
+    return render(request, "losp_overview.html")
+
+def losp_studyplan_view(request):
+    """Standalone page for the LOSP Year 1 Study Plan."""
+    return render(request, "losp_studyplan.html")
+
+def losp_schedule_tth_view(request):
+    """Standalone page for the Tues/Thurs weekly schedule."""
+    return render(request, "losp_schedule_tth.html")
+
+def losp_schedule_weekend_view(request):
+    """Standalone page for the weekend-integrated weekly schedule."""
+    return render(request, "losp_schedule_weekend.html")

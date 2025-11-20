@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}LOSP Overview One-Pager — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">LOSP Overview — One-Page Summary</div>
+  <p>
+    This one-pager summarizes how the California Law Office Study Program would be structured
+    in your office, including time commitments, supervision requirements, and the reporting
+    obligations under Rule 4.29 and Bus. &amp; Prof. Code § 6060(e)(2)(B).
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/losp/LOSP_OnePager.pdf' %}" download>
+      Download LOSP Overview (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/losp/LOSP_OnePager.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+{% endblock %}
