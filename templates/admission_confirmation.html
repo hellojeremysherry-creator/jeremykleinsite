@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Registration Approval Letter{% endblock %}
+
+{% block content %}
+  <div class="section-title">Notice of Intent to Study in a Law Office or Judge’s Chambers</div>
+  <p>
+    This is the official letter confirming my registration with the State Bar of California.
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/bar/CAL APPROVAL.pdf' %}" download>
+      Download Confirmation Letter (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/bar/CAL APPROVAL.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+
+  <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+    <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+  </div>
+{% endblock %}

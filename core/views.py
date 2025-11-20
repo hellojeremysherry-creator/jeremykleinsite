@@ -42,6 +42,16 @@ def losp_schedule_weekend_view(request):
     """Standalone page for the weekend-integrated weekly schedule."""
     return render(request, "losp_schedule_weekend.html")
 
+# LOSP forms detail pages (Section A)
+
+def admission_status_view(request):
+    """Standalone page for the Admission Status Page."""
+    return render(request, "admission_status.html")
+
+def admission_confirmation_letter(request):
+    """Standalone page for the Approval Letter Page."""
+    return render(request, "admission_confirmation.html")
+
 # LOSP forms detail pages (Section C)
 
 def losp_notice_intent_view(request):
