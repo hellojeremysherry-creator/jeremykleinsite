@@ -25,6 +25,10 @@ urlpatterns = [
     path("losp/schedule/tues-thurs/", views.losp_schedule_tth_view, name="losp_schedule_tth"),
     path("losp/schedule/weekends/", views.losp_schedule_weekend_view, name="losp_schedule_weekend"),
 
+# NEW: Section A — Official Registration & Status forms
+    path("losp/reg-status/admission-status/", views.admission_status_view, name="admission_status"),
+    path("losp/reg-status/admission-confirm/", views.admission_confirmation_letter, name="admission_confirmation_letter"),
+
 # NEW: Section C — Official LOSP forms
     path("losp/forms/notice-intent/", views.losp_notice_intent_view, name="losp_notice_intent"),
     path("losp/forms/supervising-attorney/", views.losp_supervisor_decl_view, name="losp_supervisor_decl"),

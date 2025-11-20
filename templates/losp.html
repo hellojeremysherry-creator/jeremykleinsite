@@ -11,48 +11,68 @@
   The documents below include my State Bar registration, LOSP materials, and the official forms
   required to begin and maintain a Law Office Study Program apprenticeship.
 </p>
+{##}
+{#<!-- A. Registration & Status -->#}
+{#<h3 style="margin-top:1.8rem;">A. Registration & Status</h3>#}
+{##}
+{#<div class="pdf-block">#}
+{#  <p class="pdf-label">Admission Status Page</p>#}
+{#  <embed src="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}#view=FitH" type="application/pdf" width="100%" height="600px">#}
+{#  <p><a class="btn" href="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}" download>Download Admission Status (PDF)</a></p>#}
+{#</div>#}
+{##}
+{#<div class="pdf-block">#}
+{#  <p class="pdf-label">Registration Approval Letter</p>#}
+{#  <embed src="{% static 'docs/bar/CAL APPROVAL.pdf' %}#view=FitH" type="application/pdf" width="100%" height="600px">#}
+{#  <p><a class="btn" href="{% static 'docs/bar/CAL APPROVAL.pdf' %}" download>Download Approval Letter (PDF)</a></p>#}
+{#</div>#}
+{##}
+{#<!-- B. LOSP Overview & Study Plan -->#}
+{#<h3 style="margin-top:2.2rem;">B. LOSP Overview & Study Plan</h3>#}
+{##}
+{#<div class="pdf-block">#}
+{#  <p class="pdf-label">LOSP Overview One-Pager</p>#}
+{#  <embed src="{% static 'docs/losp/LOSP_OnePager.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">#}
+{#  <p><a class="btn" href="{% static 'docs/losp/LOSP_OnePager.pdf' %}" download>Download LOSP Overview (PDF)</a></p>#}
+{#</div>#}
+{##}
+{#<div class="pdf-block">#}
+{#  <p class="pdf-label">Year 1 Study Plan</p>#}
+{#  <embed src="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">#}
+{#  <p><a class="btn" href="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}" download>Download Study Plan Draft (PDF)</a></p>#}
+{#</div>#}
+{##}
+{#<div class="pdf-block">#}
+{#  <p class="pdf-label">Weekly Schedule — Tues/Thu</p>#}
+{#  <embed src="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">#}
+{#  <p><a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}" download>Download Weekly 5-Day Schedule Draft (PDF)</a></p>#}
+{#</div>#}
+{##}
+{#<div class="pdf-block">#}
+{#  <p class="pdf-label">Weekly Schedule — Weekends</p>#}
+{#  <embed src="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">#}
+{#  <p><a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}" download>Download Weekly 6-Day Schedule Draft (PDF)</a></p>#}
+{#</div>#}
 
-<!-- A. Registration & Status -->
-<h3 style="margin-top:1.8rem;">A. Registration & Status</h3>
+<!-- A. Official State Bar Forms -->
+<h3 style="margin-top:2.2rem;">A. Registration & Status</h3>
 
-<div class="pdf-block">
-  <p class="pdf-label">Admission Status Page</p>
-  <embed src="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}#view=FitH" type="application/pdf" width="100%" height="600px">
-  <p><a class="btn" href="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}" download>Download Admission Status (PDF)</a></p>
-</div>
+<ul class="pdf-list">
+  <li><a href="{% url 'admission_status' %}">Admission Status Page</a></li>
+  <li><a href="{% url 'admission_confirmation_letter' %}">Registration Approval Letter</a></li>
+</ul>
 
-<div class="pdf-block">
-  <p class="pdf-label">Registration Approval Letter</p>
-  <embed src="{% static 'docs/bar/CAL APPROVAL.pdf' %}#view=FitH" type="application/pdf" width="100%" height="600px">
-  <p><a class="btn" href="{% static 'docs/bar/CAL APPROVAL.pdf' %}" download>Download Approval Letter (PDF)</a></p>
-</div>
 
-<!-- B. LOSP Overview & Study Plan -->
-<h3 style="margin-top:2.2rem;">B. LOSP Overview & Study Plan</h3>
+<!-- B. Official State Bar Forms -->
+<h3 style="margin-top:2.2rem;">LOSP Overview & Study Plan</h3>
 
-<div class="pdf-block">
-  <p class="pdf-label">LOSP Overview One-Pager</p>
-  <embed src="{% static 'docs/losp/LOSP_OnePager.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
-  <p><a class="btn" href="{% static 'docs/losp/LOSP_OnePager.pdf' %}" download>Download LOSP Overview (PDF)</a></p>
-</div>
+<ul class="pdf-list">
+  <li><a href="{% url 'losp_overview' %}">LOSP Overview One-Pager</a></li>
+  <li><a href="{% url 'losp_studyplan' %}">Year 1 Study Plan</a></li>
+  <li><a href="{% url 'losp_schedule_tth' %}">Weekly Schedule — Tues/Thu</a></li>
+  <li><a href="{% url 'losp_schedule_weekend' %}">Weekly Schedule — Weekends</a></li>
+</ul>
 
-<div class="pdf-block">
-  <p class="pdf-label">Year 1 Study Plan</p>
-  <embed src="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
-  <p><a class="btn" href="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}" download>Download Study Plan Draft (PDF)</a></p>
-</div>
-
-<div class="pdf-block">
-  <p class="pdf-label">Weekly Schedule — Tues/Thu</p>
-  <embed src="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
-  <p><a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}" download>Download Weekly 5-Day Schedule Draft (PDF)</a></p>
-</div>
-
-<div class="pdf-block">
-  <p class="pdf-label">Weekly Schedule — Weekends</p>
-  <embed src="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
-  <p><a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}" download>Download Weekly 6-Day Schedule Draft (PDF)</a></p>
-</div>
 
 <!-- C. Official State Bar Forms -->
 <h3 style="margin-top:2.2rem;">C. Official State Bar LOSP Forms</h3>
