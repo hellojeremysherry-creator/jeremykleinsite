@@ -12,13 +12,7 @@ jeremykleinsite
 │   ├── migrations
 │   │   └── __init__.py
 │   ├── models.py
-│   │   from django.db import models
-│   │   
-│   │   # Create your models here.
 │   ├── tests.py
-│   │   from django.test import TestCase
-│   │   
-│   │   # Create your tests here.
 │   ├── urls.py
 │   │   from django.urls import path
 │   │   from . import views
@@ -450,7 +444,7 @@ jeremykleinsite
 │   │         border: 1px solid #e5e7eb;
 │   │         background: #f9fafb;
 │   │         color: #020617;
-│   │         font-size: 0.9rem;
+│   │         font-size: 0.69rem;
 │   │         font-weight: 500;
 │   │         text-decoration: none;
 │   │         transition: background 0.12s ease, color 0.12s ease,
@@ -691,34 +685,80 @@ jeremykleinsite
 │   │   {% block title %}LOSP Docs — Jeremy Klein{% endblock %}
 │   │   
 │   │   {% block content %}
-│   │     <div class="section-title">Law Office Study Program (LOSP) Materials</div>
 │   │   
-│   │     <p>
-│   │       Below is a one-page overview of California’s Law Office Study Program as it relates to a potential
-│   │       apprenticeship in your office, along with links to the official State Bar forms and requirements.
-│   │     </p>
+│   │   <div class="section-title">Law Office Study Program — Document Hub</div>
 │   │   
-│   │     <p>
-│   │       <a class="btn" href="{% static 'docs/LOSP_Overview_OnePager.pdf' %}" download>
-│   │         Download LOSP Overview (PDF)
-│   │       </a>
-│   │     </p>
+│   │   <p class="muted" style="margin-bottom:1.4rem;">
+│   │     The documents below include my State Bar registration, LOSP materials, and the official forms
+│   │     required to begin and maintain a Law Office Study Program apprenticeship.
+│   │   </p>
 │   │   
-│   │     <div style="margin-top:1.25rem; margin-bottom:1.5rem;">
-│   │       <embed
-│   │         src="{% static 'docs/LOSP_Overview_OnePager.pdf' %}#view=FitH"
-│   │         type="application/pdf"
-│   │         width="100%"
-│   │         height="750px">
-│   │     </div>
+│   │   <!-- A. Registration & Status -->
+│   │   <h3 style="margin-top:1.8rem;">A. Registration & Status</h3>
 │   │   
-│   │     <p style="font-size:0.9rem; color:#4b5563;">
-│   │       For convenience, I’m happy to handle the logistics and State Bar filings (Form A, supervised study
-│   │       reports, and exam schedule) if we decide an apprenticeship is a good fit.
-│   │     </p>
+│   │   <div class="pdf-block">
+│   │     <p class="pdf-label">Admission Status Page</p>
+│   │     <embed src="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}#view=FitH" type="application/pdf" width="100%" height="600px">
+│   │     <p><a class="btn" href="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}" download>Download Admission Status (PDF)</a></p>
+│   │   </div>
+│   │   
+│   │   <div class="pdf-block">
+│   │     <p class="pdf-label">Registration Approval Letter</p>
+│   │     <embed src="{% static 'docs/bar/CAL APPROVAL.pdf' %}#view=FitH" type="application/pdf" width="100%" height="600px">
+│   │     <p><a class="btn" href="{% static 'docs/bar/CAL APPROVAL.pdf' %}" download>Download Approval Letter (PDF)</a></p>
+│   │   </div>
+│   │   
+│   │   <!-- B. LOSP Overview & Study Plan -->
+│   │   <h3 style="margin-top:2.2rem;">B. LOSP Overview & Study Plan</h3>
+│   │   
+│   │   <div class="pdf-block">
+│   │     <p class="pdf-label">LOSP Overview One-Pager</p>
+│   │     <embed src="{% static 'docs/losp/LOSP_OnePager.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
+│   │     <p><a class="btn" href="{% static 'docs/losp/LOSP_OnePager.pdf' %}" download>Download LOSP Overview (PDF)</a></p>
+│   │   </div>
+│   │   
+│   │   <div class="pdf-block">
+│   │     <p class="pdf-label">Year 1 Study Plan</p>
+│   │     <embed src="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
+│   │     <p><a class="btn" href="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}" download>Download Study Plan Draft (PDF)</a></p>
+│   │   </div>
+│   │   
+│   │   <div class="pdf-block">
+│   │     <p class="pdf-label">Weekly Schedule — Tues/Thu</p>
+│   │     <embed src="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
+│   │     <p><a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}" download>Download Weekly 5-Day Schedule Draft (PDF)</a></p>
+│   │   </div>
+│   │   
+│   │   <div class="pdf-block">
+│   │     <p class="pdf-label">Weekly Schedule — Weekends</p>
+│   │     <embed src="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
+│   │     <p><a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}" download>Download Weekly 6-Day Schedule Draft (PDF)</a></p>
+│   │   </div>
+│   │   
+│   │   <!-- C. Official State Bar Forms -->
+│   │   <h3 style="margin-top:2.2rem;">C. Official State Bar LOSP Forms</h3>
+│   │   
+│   │   <ul class="pdf-list">
+│   │     <li><a href="{% static 'docs/bar/LOSPNoticeIntent.pdf' %}" download>Notice of Intent (PDF)</a></li>
+│   │     <li><a href="{% static 'docs/bar/LOSIntent.0516_R.pdf' %}" download>Supervising Attorney Declaration</a></li>
+│   │     <li><a href="{% static 'docs/bar/LawOfficeStudyReportCover.0516_R.pdf' %}" download>Semiannual Report Cover Sheet</a></li>
+│   │     <li><a href="{% static 'docs/bar/LOS-Semi-Annual-Report-Form.pdf' %}" download>Semiannual Report Detail Form</a></li>
+│   │   </ul>
+│   │   
+│   │   <!-- D. Legal Authority -->
+│   │   <h3 style="margin-top:2.2rem;">D. Legal Authority (Rules & Statutes)</h3>
+│   │   
+│   │   <ul class="pdf-list">
+│   │     <li><a href="{% static 'docs/bar/Rules_Title4_Div1-Adm-Prac-Law.pdf' %}" download>Rules of the State Bar — Title 4, Division 1</a></li>
+│   │     <li><a href="{% static 'docs/bar/BAR CODE.pdf' %}" download>B&P Code §§ 6060–6061</a></li>
+│   │     <li><a href="{% static 'docs/misc/Portal Definitions.pdf' %}" download>Portal Status Definitions</a></li>
+│   │   </ul>
+│   │   
 │   │   {% endblock %}
 │   ├── packet.html
 │   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
 │   │   {% block title %}Digital LOSP Packet — Jeremy Klein{% endblock %}
 │   │   
 │   │   {% block content %}
@@ -741,21 +781,34 @@ jeremykleinsite
 │   │   
 │   │         <div class="btn-row">
 │   │           <a class="btn" href="{% url 'resume' %}">View Résumé</a>
-│   │           <a class="btn secondary" href="{% url 'writing_samples' %}">View Writing Sample</a>
-│   │           <a class="btn secondary" href="{% url 'losp' %}">View LOSP Overview</a>
+│   │           <a class="btn secondary" href="{% url 'writing_samples' %}">View Writing Sample — Memo</a>
+│   │           <a class="btn secondary" href="{% url 'appellate_brief' %}">View Writing Sample — Appellate Brief</a>
 │   │         </div>
 │   │       </section>
 │   │   
-│   │       <aside style="flex: 0 0 260px;max-width:320px;min-width:220px;border-left:1px solid #27272f;padding-left:1.2rem;">
-│   │         <div class="section-title" style="margin-bottom:0.4rem;">At a glance</div>
+│   │       <aside style="flex: 0 0 320px;max-width:360px;min-width:240px;border-left:1px solid #27272f;padding-left:1.2rem;">
+│   │         <div class="section-title" style="margin-bottom:0.4rem;">Key LOSP Documents</div>
 │   │         <ul style="padding-left:1.1rem;margin:0;font-size:0.9rem;line-height:1.55;color:#e5e7eb;">
-│   │           <li>1L completed at Hofstra Law (Legal Writing &amp; Analysis, Torts, Contracts, Crim, Civ Pro).</li>
-│   │           <li>Based in the San Gabriel Valley; flexible on in-office days/hours.</li>
-│   │           <li>Comfortable with research, drafting, and client-facing communication.</li>
+│   │           <li>
+│   │             <a href="{% static 'docs/losp/LOSP_OnePager.pdf' %}" download>LOSP Overview One-Pager (PDF)</a>
+│   │           </li>
+│   │           <li>
+│   │             <a href="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}" download>Year 1 Study Plan (PDF)</a>
+│   │           </li>
+│   │           <li>
+│   │             <a href="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}" download>
+│   │               Weekly Schedule — Tues/Thu (PDF)
+│   │             </a>
+│   │           </li>
+│   │           <li>
+│   │             <a href="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}" download>
+│   │               Weekly Schedule — With Weekends (PDF)
+│   │             </a>
+│   │           </li>
+│   │           <li style="margin-top:0.4rem;">
+│   │             <a href="{% url 'losp' %}">View full LOSP document set →</a>
+│   │           </li>
 │   │         </ul>
-│   │         <p style="margin-top:0.9rem;font-size:0.85rem;color:#6b7280;">
-│   │           If it’s helpful, I’m glad to tailor my schedule and study plan to the needs of your office and your clients.
-│   │         </p>
 │   │       </aside>
 │   │     </div>
 │   │   {% endblock %}

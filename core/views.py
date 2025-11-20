@@ -19,3 +19,7 @@ def packet_view(request):
 def appellate_brief_view(request):
     """Writing sample: Appellate brief focused on the Pregnancy Discrimination Act."""
     return render(request, "appellate_brief.html")  # 👈 NEW
+
+def materials_view(request):
+    """Hub page for résumé + writing samples."""
+    return render(request, "materials.html")
