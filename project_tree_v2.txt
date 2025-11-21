@@ -4,6 +4,7 @@ jeremykleinsite
 │   ├── admin.py
 │   ├── apps.py
 │   ├── migrations
+│   │   └── __init__.py
 │   ├── models.py
 │   ├── tests.py
 │   ├── urls.py
@@ -26,6 +27,8 @@ jeremykleinsite
 │   │   
 │   │       path("writing-samples/", views.writing_samples_view, name="writing_samples"),
 │   │       path("writing-samples/appellate-brief/", views.appellate_brief_view, name="appellate_brief"),  # 👈 NEW
+│   │       path("writing-samples/memo-of-law/", views.memo_of_law_view, name="memo_of_law"),  # 👈 NEW
+│   │   
 │   │       path("losp/", views.losp_view, name="losp"),
 │   │   
 │   │       # NEW: individual LOSP doc pages
@@ -33,6 +36,21 @@ jeremykleinsite
 │   │       path("losp/study-plan/", views.losp_studyplan_view, name="losp_studyplan"),
 │   │       path("losp/schedule/tues-thurs/", views.losp_schedule_tth_view, name="losp_schedule_tth"),
 │   │       path("losp/schedule/weekends/", views.losp_schedule_weekend_view, name="losp_schedule_weekend"),
+│   │   
+│   │   # NEW: Section A — Official Registration & Status forms
+│   │       path("losp/reg-status/admission-status/", views.admission_status_view, name="admission_status"),
+│   │       path("losp/reg-status/admission-confirm/", views.admission_confirmation_letter, name="admission_confirmation_letter"),
+│   │   
+│   │   # NEW: Section C — Official LOSP forms
+│   │       path("losp/forms/notice-intent/", views.losp_notice_intent_view, name="losp_notice_intent"),
+│   │       path("losp/forms/supervising-attorney/", views.losp_supervisor_decl_view, name="losp_supervisor_decl"),
+│   │       path("losp/forms/semiannual-cover/", views.losp_semi_cover_view, name="losp_semi_cover"),
+│   │       path("losp/forms/semiannual-detail/", views.losp_semi_detail_view, name="losp_semi_detail"),
+│   │   
+│   │       # NEW: Section D — Legal authority
+│   │       path("losp/rules/title4/", views.losp_rules_title4_view, name="losp_rules_title4"),
+│   │       path("losp/rules/bpc-6060/", views.losp_bpc_6060_view, name="losp_bpc_6060"),
+│   │       path("losp/portal-defs/", views.losp_portal_defs_view, name="losp_portal_defs"),
 │   │   ]
 │   │   
 │   └── views.py
@@ -58,6 +76,10 @@ jeremykleinsite
 │           """Writing sample: Appellate brief focused on the Pregnancy Discrimination Act."""
 │           return render(request, "appellate_brief.html")  # 👈 NEW
 │       
+│       def memo_of_law_view(request):
+│           """Writing sample: Appellate brief focused on the Pregnancy Discrimination Act."""
+│           return render(request, "memo_of_law.html")  # 👈 NEW
+│       
 │       def materials_view(request):
 │           """Hub page for résumé + writing samples."""
 │           return render(request, "materials.html")
@@ -79,6 +101,48 @@ jeremykleinsite
 │       def losp_schedule_weekend_view(request):
 │           """Standalone page for the weekend-integrated weekly schedule."""
 │           return render(request, "losp_schedule_weekend.html")
+│       
+│       # LOSP forms detail pages (Section A)
+│       
+│       def admission_status_view(request):
+│           """Standalone page for the Admission Status Page."""
+│           return render(request, "admission_status.html")
+│       
+│       def admission_confirmation_letter(request):
+│           """Standalone page for the Approval Letter Page."""
+│           return render(request, "admission_confirmation.html")
+│       
+│       # LOSP forms detail pages (Section C)
+│       
+│       def losp_notice_intent_view(request):
+│           """Standalone page for the LOSP Notice of Intent form."""
+│           return render(request, "losp_notice_intent.html")
+│       
+│       def losp_supervisor_decl_view(request):
+│           """Standalone page for the Supervising Attorney / Judge Declaration."""
+│           return render(request, "losp_supervisor_decl.html")
+│       
+│       def losp_semi_cover_view(request):
+│           """Standalone page for the Semiannual Report Cover Sheet."""
+│           return render(request, "losp_semi_cover.html")
+│       
+│       def losp_semi_detail_view(request):
+│           """Standalone page for the Semiannual Report Detail Form."""
+│           return render(request, "losp_semi_detail.html")
+│       
+│       # Legal authority detail pages (Section D)
+│       
+│       def losp_rules_title4_view(request):
+│           """Standalone page for Rules of the State Bar, Title 4, Division 1."""
+│           return render(request, "losp_rules_title4.html")
+│       
+│       def losp_bpc_6060_view(request):
+│           """Standalone page for Business & Professions Code §§ 6060–6061."""
+│           return render(request, "losp_bpc_6060.html")
+│       
+│       def losp_portal_defs_view(request):
+│           """Standalone page for State Bar Admissions Portal status definitions."""
+│           return render(request, "losp_portal_defs.html")
 ├── jeremykleinsite
 │   ├── __init__.py
 │   ├── asgi.py
@@ -95,12 +159,13 @@ jeremykleinsite
 │   └── wsgi.py
 ├── manage.py
 ├── static
-│   └── docs
-│       ├── bar
-│       ├── losp
-│       ├── misc
-│       ├── resume
-│       └── writing
+│   ├── docs
+│   │   ├── bar
+│   │   ├── losp
+│   │   ├── misc
+│   │   ├── resume
+│   │   └── writing
+│   └── img
 ├── staticfiles
 │   ├── admin
 │   │   ├── css
@@ -117,6 +182,66 @@ jeremykleinsite
 │   │           └── xregexp
 │   └── docs
 ├── templates
+│   ├── admission_confirmation.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}Registration Approval Letter{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">Notice of Intent to Study in a Law Office or Judge’s Chambers</div>
+│   │     <p>
+│   │       This is the official letter confirming my registration with the State Bar of California.
+│   │     </p>
+│   │   
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/bar/CAL APPROVAL.pdf' %}" download>
+│   │         Download Confirmation Letter (PDF)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/bar/CAL APPROVAL.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │   
+│   │     <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+│   │       <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+│   │     </div>
+│   │   {% endblock %}
+│   ├── admission_status.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}Applicant General Status{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">Admission Status Page</div>
+│   │     <p>
+│   │       This is my admission status page as a general applicant from my Cal Bar Portal.
+│   │     </p>
+│   │   
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}" download>
+│   │         Download Admission Status Page (PDF)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/bar/LOSPNoticeIntent.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │   
+│   │     <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+│   │       <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+│   │     </div>
+│   │   {% endblock %}
 │   ├── appellate_brief.html
 │   │   {% extends "base.html" %}
 │   │   {% load static %}
@@ -131,12 +256,6 @@ jeremykleinsite
 │   │       prior accommodation practices to similarly limited employees
 │   │     </p>
 │   │   
-│   │     <p>
-│   │       <a class="btn" href="{% static 'docs/Appellate Brief - PDA.pdf' %}" download>
-│   │         Download Appellate Brief (PDF)
-│   │       </a>
-│   │     </p>
-│   │   
 │   │     <div style="margin-top:1.25rem;">
 │   │       <embed
 │   │         src="{% static 'docs/Appellate Brief - PDA.pdf' %}#view=FitH"
@@ -144,15 +263,22 @@ jeremykleinsite
 │   │         width="100%"
 │   │         height="750px">
 │   │     </div>
-│   │         <p>
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/Appellate Brief - PDA.pdf' %}" download>
+│   │         Download Appellate Brief (PDF)
+│   │       </a>
 │   │       <a class="btn" href="{% static 'docs/Appellate Brief - PDA.docx' %}" download>
 │   │         Download Appellate Brief (DOCX)
 │   │       </a>
 │   │     </p>
 │   │   
-│   │     <p class="muted" style="margin-top:0.9rem;">
-│   │       The brief is also provided as a Word document for easier annotation and review.
-│   │     </p>
+│   │     <div class="btn-row" style="margin-top:-2rem;justify-content:right;">
+│   │       <a class="btn secondary" href="{% url 'materials' %}">Back to Materials Hub</a>
+│   │       <a class="btn secondary" href="{% url 'resume' %}">View Résumé</a>
+│   │       <a class="btn secondary" href="{% url 'writing_samples' %}">View PDA E-Memo</a>
+│   │       <a class="btn secondary" href="{% url 'memo_of_law' %}">View Lanham Act Memo</a>
+│   │   
+│   │     </div>
 │   │   {% endblock %}
 │   ├── base.html
 │   │   <!doctype html>
@@ -462,6 +588,27 @@ jeremykleinsite
 │   │           0 0 0 1px rgba(59, 130, 246, 0.3),
 │   │           0 44px 110px rgba(15, 23, 42, 0.95);
 │   │       }
+│   │       .avatar-video {
+│   │         width: 55px;
+│   │         height: 55px;
+│   │         border-radius: 999px;
+│   │         overflow: hidden;
+│   │         border: 3px solid #1f1f1f;
+│   │         flex-shrink: 0;
+│   │         position: fixed;
+│   │         top: 19.55%;
+│   │         right: 1%;
+│   │         bottom: 65%;
+│   │         left: 89.88%;
+│   │       }
+│   │   
+│   │       .avatar-video video {
+│   │         width: 100%;
+│   │         height: 100%;
+│   │         object-fit: cover;
+│   │         display: block;
+│   │   
+│   │       }
 │   │   
 │   │       @keyframes pillPulse {
 │   │         0% {
@@ -500,19 +647,35 @@ jeremykleinsite
 │   │   <div class="page-shell">
 │   │     <div class="layout">
 │   │       <header>
-│   │         <div class="identity">
-│   │           <div class="badge-row">
-│   │           </div>
-│   │           <div class="name">Jeremy Klein</div>
-│   │           <div class="tagline">
-│   │             LOSP Candidate — focused on SGV small &amp; immigrant-owned businesses
-│   │           </div>
+│   │     <div style="display:flex;align-items:center;gap:0.1rem;">
+│   │       <div class="avatar-video">
+│   │         <video
+│   │           src="{% static 'img/jeremy-loop.mp4' %}"
+│   │           autoplay
+│   │           muted
+│   │           loop
+│   │           playsinline
+│   │         ></video>
+│   │       </div>
+│   │       <div class="identity">
+│   │         <div class="badge-row">
 │   │         </div>
-│   │         <div class="contact">
-│   │           Duarte, CA • 631-365-4554<br>
-│   │           <a href="mailto:supjeremyklein@gmail.com">supjeremyklein@gmail.com</a>
+│   │         <div class="name">Jeremy Klein</div>
+│   │         <div class="tagline">
+│   │           LOSP Candidate — focused on SGV small &amp; immigrant-owned businesses
 │   │         </div>
-│   │       </header>
+│   │       </div>
+│   │     </div>
+│   │   
+│   │     <div class="contact">
+│   │       Duarte, CA • 631-365-4554<br>
+│   │       <a href="mailto:supjeremyklein@gmail.com">supjeremyklein@gmail.com</a>
+│   │         <br>
+│   │       <a href="mailto:jklein53@pride.hofstra.edu">jklein53@pride.hofstra.edu</a>
+│   │   
+│   │     </div>
+│   │   </header>
+│   │   
 │   │   
 │   │       <nav>
 │   │         <a href="{% url 'home' %}">Home</a>
@@ -571,68 +734,152 @@ jeremykleinsite
 │   │     The documents below include my State Bar registration, LOSP materials, and the official forms
 │   │     required to begin and maintain a Law Office Study Program apprenticeship.
 │   │   </p>
+│   │   {##}
+│   │   {#<!-- A. Registration & Status -->#}
+│   │   {#<h3 style="margin-top:1.8rem;">A. Registration & Status</h3>#}
+│   │   {##}
+│   │   {#<div class="pdf-block">#}
+│   │   {#  <p class="pdf-label">Admission Status Page</p>#}
+│   │   {#  <embed src="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}#view=FitH" type="application/pdf" width="100%" height="600px">#}
+│   │   {#  <p><a class="btn" href="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}" download>Download Admission Status (PDF)</a></p>#}
+│   │   {#</div>#}
+│   │   {##}
+│   │   {#<div class="pdf-block">#}
+│   │   {#  <p class="pdf-label">Registration Approval Letter</p>#}
+│   │   {#  <embed src="{% static 'docs/bar/CAL APPROVAL.pdf' %}#view=FitH" type="application/pdf" width="100%" height="600px">#}
+│   │   {#  <p><a class="btn" href="{% static 'docs/bar/CAL APPROVAL.pdf' %}" download>Download Approval Letter (PDF)</a></p>#}
+│   │   {#</div>#}
+│   │   {##}
+│   │   {#<!-- B. LOSP Overview & Study Plan -->#}
+│   │   {#<h3 style="margin-top:2.2rem;">B. LOSP Overview & Study Plan</h3>#}
+│   │   {##}
+│   │   {#<div class="pdf-block">#}
+│   │   {#  <p class="pdf-label">LOSP Overview One-Pager</p>#}
+│   │   {#  <embed src="{% static 'docs/losp/LOSP_OnePager.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">#}
+│   │   {#  <p><a class="btn" href="{% static 'docs/losp/LOSP_OnePager.pdf' %}" download>Download LOSP Overview (PDF)</a></p>#}
+│   │   {#</div>#}
+│   │   {##}
+│   │   {#<div class="pdf-block">#}
+│   │   {#  <p class="pdf-label">Year 1 Study Plan</p>#}
+│   │   {#  <embed src="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">#}
+│   │   {#  <p><a class="btn" href="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}" download>Download Study Plan Draft (PDF)</a></p>#}
+│   │   {#</div>#}
+│   │   {##}
+│   │   {#<div class="pdf-block">#}
+│   │   {#  <p class="pdf-label">Weekly Schedule — Tues/Thu</p>#}
+│   │   {#  <embed src="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">#}
+│   │   {#  <p><a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}" download>Download Weekly 5-Day Schedule Draft (PDF)</a></p>#}
+│   │   {#</div>#}
+│   │   {##}
+│   │   {#<div class="pdf-block">#}
+│   │   {#  <p class="pdf-label">Weekly Schedule — Weekends</p>#}
+│   │   {#  <embed src="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">#}
+│   │   {#  <p><a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}" download>Download Weekly 6-Day Schedule Draft (PDF)</a></p>#}
+│   │   {#</div>#}
 │   │   
-│   │   <!-- A. Registration & Status -->
-│   │   <h3 style="margin-top:1.8rem;">A. Registration & Status</h3>
+│   │   <!-- A. Official State Bar Forms -->
+│   │   <h3 style="margin-top:2.2rem;">A. Registration & Status</h3>
 │   │   
-│   │   <div class="pdf-block">
-│   │     <p class="pdf-label">Admission Status Page</p>
-│   │     <embed src="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}#view=FitH" type="application/pdf" width="100%" height="600px">
-│   │     <p><a class="btn" href="{% static 'docs/bar/Jeremy Matthew Klein - Status- APP.pdf' %}" download>Download Admission Status (PDF)</a></p>
-│   │   </div>
+│   │   <ul class="pdf-list">
+│   │     <li><a href="{% url 'admission_status' %}">Admission Status Page</a></li>
+│   │     <li><a href="{% url 'admission_confirmation_letter' %}">Registration Approval Letter</a></li>
+│   │   </ul>
 │   │   
-│   │   <div class="pdf-block">
-│   │     <p class="pdf-label">Registration Approval Letter</p>
-│   │     <embed src="{% static 'docs/bar/CAL APPROVAL.pdf' %}#view=FitH" type="application/pdf" width="100%" height="600px">
-│   │     <p><a class="btn" href="{% static 'docs/bar/CAL APPROVAL.pdf' %}" download>Download Approval Letter (PDF)</a></p>
-│   │   </div>
 │   │   
-│   │   <!-- B. LOSP Overview & Study Plan -->
+│   │   <!-- B. Official State Bar Forms -->
 │   │   <h3 style="margin-top:2.2rem;">B. LOSP Overview & Study Plan</h3>
 │   │   
-│   │   <div class="pdf-block">
-│   │     <p class="pdf-label">LOSP Overview One-Pager</p>
-│   │     <embed src="{% static 'docs/losp/LOSP_OnePager.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
-│   │     <p><a class="btn" href="{% static 'docs/losp/LOSP_OnePager.pdf' %}" download>Download LOSP Overview (PDF)</a></p>
-│   │   </div>
+│   │   <ul class="pdf-list">
+│   │     <li><a href="{% url 'losp_overview' %}">LOSP Overview One-Pager</a></li>
+│   │     <li><a href="{% url 'losp_studyplan' %}">Year 1 Study Plan</a></li>
+│   │     <li><a href="{% url 'losp_schedule_tth' %}">Weekly Schedule — Tues/Thu</a></li>
+│   │     <li><a href="{% url 'losp_schedule_weekend' %}">Weekly Schedule — Weekends</a></li>
+│   │   </ul>
 │   │   
-│   │   <div class="pdf-block">
-│   │     <p class="pdf-label">Year 1 Study Plan</p>
-│   │     <embed src="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
-│   │     <p><a class="btn" href="{% static 'docs/losp/LOSP_StudyPlan.pdf' %}" download>Download Study Plan Draft (PDF)</a></p>
-│   │   </div>
-│   │   
-│   │   <div class="pdf-block">
-│   │     <p class="pdf-label">Weekly Schedule — Tues/Thu</p>
-│   │     <embed src="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
-│   │     <p><a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_MonFri.pdf' %}" download>Download Weekly 5-Day Schedule Draft (PDF)</a></p>
-│   │   </div>
-│   │   
-│   │   <div class="pdf-block">
-│   │     <p class="pdf-label">Weekly Schedule — Weekends</p>
-│   │     <embed src="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}#view=FitH" type="application/pdf" width="100%" height="650px">
-│   │     <p><a class="btn" href="{% static 'docs/losp/LOSP_WeeklySchedule_Weekend.pdf' %}" download>Download Weekly 6-Day Schedule Draft (PDF)</a></p>
-│   │   </div>
 │   │   
 │   │   <!-- C. Official State Bar Forms -->
 │   │   <h3 style="margin-top:2.2rem;">C. Official State Bar LOSP Forms</h3>
 │   │   
 │   │   <ul class="pdf-list">
-│   │     <li><a href="{% static 'docs/bar/LOSPNoticeIntent.pdf' %}" download>Notice of Intent (PDF)</a></li>
-│   │     <li><a href="{% static 'docs/bar/LOSIntent.0516_R.pdf' %}" download>Supervising Attorney Declaration</a></li>
-│   │     <li><a href="{% static 'docs/bar/LawOfficeStudyReportCover.0516_R.pdf' %}" download>Semiannual Report Cover Sheet</a></li>
-│   │     <li><a href="{% static 'docs/bar/LOS-Semi-Annual-Report-Form.pdf' %}" download>Semiannual Report Detail Form</a></li>
+│   │     <li><a href="{% url 'losp_notice_intent' %}">Notice of Intent (Form &amp; Payment Coupon)</a></li>
+│   │     <li><a href="{% url 'losp_supervisor_decl' %}">Supervising Attorney / Judge Declaration</a></li>
+│   │     <li><a href="{% url 'losp_semi_cover' %}">Law Office Study Semiannual Report Cover Sheet</a></li>
+│   │     <li><a href="{% url 'losp_semi_detail' %}">Semiannual Report Detail Form</a></li>
 │   │   </ul>
 │   │   
 │   │   <!-- D. Legal Authority -->
 │   │   <h3 style="margin-top:2.2rem;">D. Legal Authority (Rules & Statutes)</h3>
 │   │   
 │   │   <ul class="pdf-list">
-│   │     <li><a href="{% static 'docs/bar/Rules_Title4_Div1-Adm-Prac-Law.pdf' %}" download>Rules of the State Bar — Title 4, Division 1</a></li>
-│   │     <li><a href="{% static 'docs/bar/BAR CODE.pdf' %}" download>B&P Code §§ 6060–6061</a></li>
-│   │     <li><a href="{% static 'docs/misc/Portal Definitions.pdf' %}" download>Portal Status Definitions</a></li>
+│   │     <li><a href="{% url 'losp_rules_title4' %}">Rules of the State Bar — Title 4, Division 1 (Admissions Rules)</a></li>
+│   │     <li><a href="{% url 'losp_bpc_6060' %}">Business &amp; Professions Code §§ 6060–6061</a></li>
+│   │     <li><a href="{% url 'losp_portal_defs' %}">State Bar Admissions Portal — Status Definitions</a></li>
 │   │   </ul>
 │   │   
+│   │   {% endblock %}
+│   ├── losp_bpc_6060.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}Business & Professions Code §§ 6060–6061 — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">Business &amp; Professions Code §§ 6060–6061</div>
+│   │     <p>
+│   │       These sections of the California Business and Professions Code set out the statutory requirements
+│   │       for admission to the practice of law, including the LOSP pathway under § 6060(e)(2)(B) and the
+│   │       first-year law students’ examination requirement and exemption under § 6060(h).
+│   │     </p>
+│   │   
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/bar/BAR CODE.pdf' %}" download>
+│   │         Download B&amp;P Code §§ 6060–6061 (PDF)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/bar/BAR CODE.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │   
+│   │     <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+│   │       <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+│   │     </div>
+│   │   {% endblock %}
+│   ├── losp_notice_intent.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}LOSP Notice of Intent — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">Notice of Intent to Study in a Law Office or Judge’s Chambers</div>
+│   │     <p>
+│   │       This is the official State Bar form used to initiate participation in the Law Office Study Program.
+│   │       It is filed within 30 days of beginning supervised law study in a law office or judge’s chambers,
+│   │       together with the required fee.
+│   │     </p>
+│   │   
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/bar/LOSPNoticeIntent.pdf' %}" download>
+│   │         Download Notice of Intent (PDF)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/bar/LOSPNoticeIntent.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │   
+│   │     <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+│   │       <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+│   │     </div>
 │   │   {% endblock %}
 │   ├── losp_overview.html
 │   │   {% extends "base.html" %}
@@ -665,6 +912,68 @@ jeremykleinsite
 │   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'packet' %}">Back to Digital Materials Packet</a>
 │   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'losp_studyplan' %}">Next Document (1-Year Study Plan)</a>
 │   │       </div>
+│   │   {% endblock %}
+│   ├── losp_portal_defs.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}Admissions Portal Status Definitions — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">State Bar Admissions Portal — Status Definitions</div>
+│   │     <p>
+│   │       This reference explains the meaning of various case status labels (e.g., Drafted, Submitted,
+│   │       Pending Internal, Approved) used in the State Bar’s Applicant Portal.
+│   │     </p>
+│   │   
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/misc/Portal Definitions.pdf' %}" download>
+│   │         Download Portal Status Definitions (PDF)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/misc/Portal Definitions.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │   
+│   │     <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+│   │       <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+│   │     </div>
+│   │   {% endblock %}
+│   ├── losp_rules_title4.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}Admissions Rules — Title 4, Division 1 — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">Rules of the State Bar — Title 4, Division 1 (Admissions)</div>
+│   │     <p>
+│   │       This document contains the official California State Bar Admissions Rules, including Rule 4.29,
+│   │       which governs law office and judge’s chambers study for the LOSP.
+│   │     </p>
+│   │   
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/bar/Rules_Title4_Div1-Adm-Prac-Law.pdf' %}" download>
+│   │         Download Admissions Rules (PDF)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/bar/Rules_Title4_Div1-Adm-Prac-Law.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │   
+│   │     <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+│   │       <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+│   │     </div>
 │   │   {% endblock %}
 │   ├── losp_schedule_tth.html
 │   │   {% extends "base.html" %}
@@ -726,6 +1035,69 @@ jeremykleinsite
 │   │         height="750px">
 │   │     </div>
 │   │   {% endblock %}
+│   ├── losp_semi_cover.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}Semiannual Report Cover Sheet — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">Law Office Study — Semiannual Report Cover Sheet</div>
+│   │     <p>
+│   │       This cover sheet accompanies each six-month report submitted under the LOSP. It summarizes the
+│   │       study period, hours, and primary materials, and is filed together with the written monthly exams
+│   │       and the required fee.
+│   │     </p>
+│   │   
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/bar/LawOfficeStudyReportCover.0516_R.pdf' %}" download>
+│   │         Download Semiannual Report Cover Sheet (PDF)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/bar/LawOfficeStudyReportCover.0516_R.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │   
+│   │     <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+│   │       <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+│   │     </div>
+│   │   {% endblock %}
+│   ├── losp_semi_detail.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}Semiannual Report Detail Form — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">Law Office Study — Semiannual Report Detail Form</div>
+│   │     <p>
+│   │       This form is used to provide detailed information on weekly hours, supervision, and materials
+│   │       studied during each six-month LOSP period, as required by Rule 4.29.
+│   │     </p>
+│   │   
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/bar/LOS-Semi-Annual-Report-Form.pdf' %}" download>
+│   │         Download Semiannual Report Detail Form (PDF)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/bar/LOS-Semi-Annual-Report-Form.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │   
+│   │     <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+│   │       <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+│   │     </div>
+│   │   {% endblock %}
 │   ├── losp_studyplan.html
 │   │   {% extends "base.html" %}
 │   │   {% load static %}
@@ -758,6 +1130,37 @@ jeremykleinsite
 │   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'losp_schedule_tth' %}">Next Document (5-Day Schedule)</a>
 │   │       </div>
 │   │   {% endblock %}
+│   ├── losp_supervisor_decl.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
+│   │   
+│   │   {% block title %}Supervising Attorney Declaration — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">Supervising Attorney / Judge Declaration</div>
+│   │     <p>
+│   │       This form is completed by the supervising attorney or judge to confirm eligibility and
+│   │       acceptance of responsibility under the LOSP, including personal supervision and periodic reporting.
+│   │     </p>
+│   │   
+│   │     <p>
+│   │       <a class="btn" href="{% static 'docs/bar/LOSIntent.0516_R.pdf' %}" download>
+│   │         Download Supervising Attorney Declaration (PDF)
+│   │       </a>
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/bar/LOSIntent.0516_R.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │   
+│   │     <div class="btn-row" style="margin-top:1rem;justify-content:center;">
+│   │       <a class="btn secondary" href="{% url 'losp' %}">Back to LOSP Docs Hub</a>
+│   │     </div>
+│   │   {% endblock %}
 │   ├── materials.html
 │   │   {% extends "base.html" %}
 │   │   {% load static %}
@@ -769,81 +1172,147 @@ jeremykleinsite
 │   │   <div class="section-title">Résumé &amp; Writing Samples</div>
 │   │   
 │   │   <p class="muted" style="margin-bottom:1.4rem;">
-│   │     This page collects my résumé and two writing samples (an objective memorandum and an appellate brief)
-│   │     in one place for easier review.
+│   │     This page collects my résumé and three writing samples: an objective e-memorandum,
+│   │     a memorandum of law in opposition under the Lanham Act, and an appellate brief.
 │   │   </p>
 │   │   
 │   │       <div class="btn-row" style="margin-bottom:1.4rem; justify-content: center;">
 │   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'resume' %}">View Résumé</a>
-│   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'writing_samples' %}">View Writing Sample — Memo</a>
-│   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'appellate_brief' %}">View Writing Sample — Appellate Brief</a>
+│   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'writing_samples' %}">View PDA E-Memo</a>
+│   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'memo_of_law' %}">View Lanham Act Memo</a>
+│   │       <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'appellate_brief' %}">View PDA Appellate Brief</a>
 │   │       </div>
+│   │   {##}
+│   │   {#<!-- A. Résumé -->#}
+│   │   {#<h3 style="margin-top:1.4rem;">A. Résumé</h3>#}
+│   │   {#<p style="font-size:0.9rem;color:#e5e7eb;">#}
+│   │   {#  Current résumé highlighting my 1L coursework, prior professional experience, and focus on#}
+│   │   {#  supporting small and immigrant-owned businesses in the San Gabriel Valley.#}
+│   │   {#</p>#}
+│   │   {##}
+│   │   {#<div class="pdf-block">#}
+│   │   {#  <p class="pdf-label">Résumé (PDF)</p>#}
+│   │   {#  <embed#}
+│   │   {#    src="{% static 'docs/Jeremy Klein Resume.pdf' %}#view=FitH"#}
+│   │   {#    type="application/pdf"#}
+│   │   {#    width="100%"#}
+│   │   {#    height="650px">#}
+│   │   {#  <p>#}
+│   │   {#    <a class="btn" href="{% static 'docs/Jeremy Klein Resume.pdf' %}" download>#}
+│   │   {#      Download Résumé (PDF)#}
+│   │   {#    </a>#}
+│   │   {#  </p>#}
+│   │   {#</div>#}
+│   │   {##}
+│   │   {#<!-- B. Writing Sample — E-Memo -->#}
+│   │   {#<h3 style="margin-top:2.0rem;">B. Writing Sample — Objective E-Memo</h3>#}
+│   │   {#<p style="font-size:0.9rem;color:#e5e7eb;">#}
+│   │   {#  An objective e-memo analyzing Pregnancy Discrimination Act accommodation practices, with emphasis on#}
+│   │   {#  case comparison, statutory interpretation, and neutral application of facts to law.#}
+│   │   {#</p>#}
+│   │   {##}
+│   │   {#<div class="pdf-block">#}
+│   │   {#  <p class="pdf-label">PDA E-Memo (PDF)</p>#}
+│   │   {#  <embed#}
+│   │   {#    src="{% static 'docs/E-Memo.pdf' %}#view=FitH"#}
+│   │   {#    type="application/pdf"#}
+│   │   {#    width="100%"#}
+│   │   {#    height="650px">#}
+│   │   {#  <p>#}
+│   │   {#    <a class="btn" href="{% static 'docs/E-Memo.pdf' %}" download>#}
+│   │   {#      Download E-Memo (PDF)#}
+│   │   {#    </a>#}
+│   │   {#  </p>#}
+│   │   {#</div>#}
+│   │   {##}
+│   │   {#<!-- C. Writing Sample — Lanham Act Memo -->#}
+│   │   {#<h3 style="margin-top:2.0rem;">C. Writing Sample — Lanham Act Memo</h3>#}
+│   │   {#<p style="font-size:0.9rem;color:#e5e7eb;">#}
+│   │   {#    A memorandum opposing a motion to dismiss, arguing that “Emerald Greene Design”#}
+│   │   {#    is a protectable Lanham Act mark and that similar branding, close proximity,#}
+│   │   {#    and planned expansion create a substantial likelihood of consumer confusion.#}
+│   │   {#</p>#}
+│   │   {##}
+│   │   {#<div class="pdf-block">#}
+│   │   {#  <p class="pdf-label">Lanham Act Memo (PDF)</p>#}
+│   │   {#  <embed#}
+│   │   {#    src="{% static 'docs/writing/Memo of Law.pdf' %}#view=FitH"#}
+│   │   {#    type="application/pdf"#}
+│   │   {#    width="100%"#}
+│   │   {#    height="650px">#}
+│   │   {#  <p>#}
+│   │   {#    <a class="btn" href="{% static 'docs/writing/Memo of Law.pdf' %}" download>#}
+│   │   {#      Download Lanham Act Memo (PDF)#}
+│   │   {#    </a>#}
+│   │   {#    <a class="btn secondary" href="{% static 'docs/writing/Memo of Law.docx' %}" download>#}
+│   │   {#      Download Memo (DOCX)#}
+│   │   {#    </a>#}
+│   │   {#  </p>#}
+│   │   {#</div>#}
+│   │   {##}
+│   │   {#<!-- D. Writing Sample — Appellate Brief -->#}
+│   │   {#<h3 style="margin-top:2.0rem;">D. Writing Sample — Appellate Brief</h3>#}
+│   │   {#<p style="font-size:0.9rem;color:#e5e7eb;">#}
+│   │   {#  An appellate brief addressing Pregnancy Discrimination Act issues, focusing on standards of review,#}
+│   │   {#  preserved error, and comparison between accommodation of pregnant and non-pregnant employees.#}
+│   │   {#</p>#}
+│   │   {##}
+│   │   {#<div class="pdf-block">#}
+│   │   {#  <p class="pdf-label">Appellate Brief (PDF)</p>#}
+│   │   {#  <embed#}
+│   │   {#    src="{% static 'docs/Appellate Brief - PDA.pdf' %}#view=FitH"#}
+│   │   {#    type="application/pdf"#}
+│   │   {#    width="100%"#}
+│   │   {#    height="650px">#}
+│   │   {#  <p>#}
+│   │   {#    <a class="btn" href="{% static 'docs/Appellate Brief - PDA.pdf' %}" download>#}
+│   │   {#      Download Appellate Brief (PDF)#}
+│   │   {#    </a>#}
+│   │   {#    <a class="btn secondary" href="{% static 'docs/Appellate Brief - PDA.docx' %}" download>#}
+│   │   {#      Download Brief (DOCX)#}
+│   │   {#    </a>#}
+│   │   {#  </p>#}
+│   │   {#</div>#}
 │   │   
-│   │   <!-- A. Résumé -->
-│   │   <h3 style="margin-top:1.4rem;">A. Résumé</h3>
-│   │   <p style="font-size:0.9rem;color:#e5e7eb;">
-│   │     Current résumé highlighting my 1L coursework, prior professional experience, and focus on
-│   │     supporting small and immigrant-owned businesses in the San Gabriel Valley.
-│   │   </p>
+│   │   {% endblock %}
+│   ├── memo_of_law.html
+│   │   {% extends "base.html" %}
+│   │   {% load static %}
 │   │   
-│   │   <div class="pdf-block">
-│   │     <p class="pdf-label">Résumé (PDF)</p>
-│   │     <embed
-│   │       src="{% static 'docs/Jeremy Klein Resume.pdf' %}#view=FitH"
-│   │       type="application/pdf"
-│   │       width="100%"
-│   │       height="650px">
+│   │   {% block title %}Memorandum of Law — Jeremy Klein{% endblock %}
+│   │   
+│   │   {% block content %}
+│   │     <div class="section-title">Writing Sample — Memorandum of Law (Trademark Confusion Opposition Brief)</div>
 │   │     <p>
-│   │       <a class="btn" href="{% static 'docs/Jeremy Klein Resume.pdf' %}" download>
-│   │         Download Résumé (PDF)
+│   │       A memorandum opposing defendants’ motion to dismiss, arguing that “Emerald Greene Design” is
+│   │       a suggestive, protectable mark and that shared eco-friendly branding, geographic proximity,
+│   │       and planned market expansion create a strong likelihood of consumer confusion under the Lanham Act.
+│   │   
+│   │     </p>
+│   │   
+│   │     <div style="margin-top:1.25rem;">
+│   │       <embed
+│   │         src="{% static 'docs/writing/Memo of Law.pdf' %}#view=FitH"
+│   │         type="application/pdf"
+│   │         width="100%"
+│   │         height="750px">
+│   │     </div>
+│   │         <p>
+│   │       <a class="btn" href="{% static 'docs/writing/Memo of Law.pdf' %}" download>
+│   │         Download Lanham Act Memo (PDF)
+│   │       </a>
+│   │       <a class="btn" href="{% static 'docs/writing/Memo of Law.docx' %}" download>
+│   │         Download Lanham Act Memo (DOCX)
 │   │       </a>
 │   │     </p>
-│   │   </div>
 │   │   
-│   │   <!-- B. Writing Sample — E-Memo -->
-│   │   <h3 style="margin-top:2.0rem;">B. Writing Sample — Objective E-Memo</h3>
-│   │   <p style="font-size:0.9rem;color:#e5e7eb;">
-│   │     An objective e-memo analyzing Pregnancy Discrimination Act accommodation practices, with emphasis on
-│   │     case comparison, statutory interpretation, and neutral application of facts to law.
-│   │   </p>
+│   │     <div class="btn-row" style="margin-top:1rem;justify-content:right;">
+│   │       <a class="btn secondary" href="{% url 'materials' %}">Back to Materials Hub</a>
+│   │       <a class="btn secondary" href="{% url 'resume' %}">View Résumé</a>
+│   │       <a class="btn secondary" href="{% url 'writing_samples' %}">View PDA E-Memo</a>
+│   │       <a class="btn secondary" href="{% url 'appellate_brief' %}">View PDA Appellate Brief</a>
 │   │   
-│   │   <div class="pdf-block">
-│   │     <p class="pdf-label">PDA E-Memo (PDF)</p>
-│   │     <embed
-│   │       src="{% static 'docs/E-Memo.pdf' %}#view=FitH"
-│   │       type="application/pdf"
-│   │       width="100%"
-│   │       height="650px">
-│   │     <p>
-│   │       <a class="btn" href="{% static 'docs/E-Memo.pdf' %}" download>
-│   │         Download E-Memo (PDF)
-│   │       </a>
-│   │     </p>
-│   │   </div>
-│   │   
-│   │   <!-- C. Writing Sample — Appellate Brief -->
-│   │   <h3 style="margin-top:2.0rem;">C. Writing Sample — Appellate Brief</h3>
-│   │   <p style="font-size:0.9rem;color:#e5e7eb;">
-│   │     An appellate brief addressing Pregnancy Discrimination Act issues, focusing on standards of review,
-│   │     preserved error, and comparison between accommodation of pregnant and non-pregnant employees.
-│   │   </p>
-│   │   
-│   │   <div class="pdf-block">
-│   │     <p class="pdf-label">Appellate Brief (PDF)</p>
-│   │     <embed
-│   │       src="{% static 'docs/Appellate Brief - PDA.pdf' %}#view=FitH"
-│   │       type="application/pdf"
-│   │       width="100%"
-│   │       height="650px">
-│   │     <p>
-│   │       <a class="btn" href="{% static 'docs/Appellate Brief - PDA.pdf' %}" download>
-│   │         Download Appellate Brief (PDF)
-│   │       </a>
-│   │       <a class="btn secondary" href="{% static 'docs/Appellate Brief - PDA.docx' %}" download>
-│   │         Download Brief (DOCX)
-│   │       </a>
-│   │     </p>
-│   │   </div>
+│   │     </div>
 │   │   
 │   │   {% endblock %}
 │   ├── packet.html
@@ -915,12 +1384,9 @@ jeremykleinsite
 │   │   
 │   │   {% block content %}
 │   │     <div class="section-title">Résumé</div>
-│   │     <p>You can review my résumé below or download a copy as a PDF.</p>
-│   │   
-│   │     <p>
-│   │       <a class="btn" href="{% static 'docs/Jeremy Klein Resume.pdf' %}" download>
-│   │         Download Résumé (PDF)
-│   │       </a>
+│   │     <p style="font-size:0.9rem;color:#e5e7eb;">
+│   │     Current résumé highlighting my 1L coursework, prior professional experience, and focus on
+│   │     supporting small and immigrant-owned businesses in the San Gabriel Valley.
 │   │     </p>
 │   │   
 │   │     <p style="font-size:0.85rem; color:#6b7280; margin-top:0.75rem;">
@@ -933,6 +1399,18 @@ jeremykleinsite
 │   │         type="application/pdf"
 │   │         width="100%"
 │   │         height="750px">
+│   │     </div>
+│   │   <p>
+│   │   <a class="btn" href="{% static 'docs/Jeremy Klein Resume.pdf' %}" download>
+│   │     Download Résumé (PDF)
+│   │   </a>
+│   │   </p>
+│   │     <div class="btn-row" style="margin-top:-2rem;justify-content:right;">
+│   │       <a class="btn secondary" href="{% url 'materials' %}">Back to Materials Hub</a>
+│   │       <a class="btn secondary" href="{% url 'writing_samples' %}">View PDA E-Memo</a>
+│   │       <a class="btn secondary" href="{% url 'memo_of_law' %}">View Lanham Act Memo</a>
+│   │       <a class="btn secondary" href="{% url 'appellate_brief' %}">View PDA Appellate Brief</a>
+│   │   
 │   │     </div>
 │   │   {% endblock %}
 │   └── writing_samples.html
@@ -948,18 +1426,25 @@ jeremykleinsite
 │           the Pregnancy Discrimination Act were applied equally to similarly limited employees.
 │         </p>
 │       
-│         <p>
-│           <a class="btn" href="{% static 'docs/E-Memo.pdf' %}" download>
-│             Download E-Memo Sample (PDF)
-│           </a>
-│         </p>
-│       
 │         <div style="margin-top:1.25rem;">
 │           <embed
 │             src="{% static 'docs/E-Memo.pdf' %}#view=FitH"
 │             type="application/pdf"
 │             width="100%"
 │             height="750px">
+│         </div>
+│       
+│         <p>
+│           <a class="btn" href="{% static 'docs/E-Memo.pdf' %}" download>
+│             Download E-Memo Sample (PDF)
+│           </a>
+│       
+│         <div class="btn-row" style="margin-top:-2.5rem;justify-content:right;">
+│           <a class="btn secondary" href="{% url 'materials' %}">Back to Materials Hub</a>
+│           <a class="btn secondary" href="{% url 'resume' %}">View Résumé</a>
+│           <a class="btn secondary" href="{% url 'memo_of_law' %}">View Trademark Memo</a>
+│           <a class="btn secondary" href="{% url 'appellate_brief' %}">View PDA Appellate Brief</a>
+│       
 │         </div>
 │       {% endblock %}
 └── tree.py
