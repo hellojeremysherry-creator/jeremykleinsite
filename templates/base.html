@@ -319,22 +319,78 @@
       }
     }
 
-    @media (max-width: 720px) {
-      .page-shell {
-        padding: 1.5rem 0.9rem 2.4rem;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
-      }
-      .contact {
-        text-align: left;
-      }
-      .card {
-        padding: 1.5rem 1.4rem 1.7rem;
-      }
-    }
+@media (max-width: 720px) {
+  .page-shell {
+    padding: 1.25rem 0.9rem 2rem;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .contact {
+    text-align: left;
+  }
+
+  .card {
+    padding: 1.35rem 1.25rem 1.6rem;
+  }
+
+  nav {
+    gap: 0.45rem;
+  }
+
+  nav a {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-card {
+    gap: 1.25rem;
+  }
+
+  .hero-meta {
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  body {
+    padding: 6px;
+  }
+
+  .page-shell {
+    padding: 1rem 0.5rem 1.6rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-pill {
+    width: 100%;
+    max-width: 100%;
+    height: 38vh; /* use a slice of viewport height on tiny screens */
+  }
+
+  .card {
+    padding: 1.2rem 1rem 1.4rem;
+  }
+
+  footer {
+    font-size: 0.75rem;
+  }
+}
+
   </style>
 </head>
 <body>
