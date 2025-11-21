@@ -318,7 +318,19 @@
         background: radial-gradient(circle at top left, #020617, #18181b 60%, #000000);
       }
     }
+.pdf-frame {
+  width: 100%;
+  height: min(75vh, 750px); /* responsive height: up to 75% of viewport, max 750px */
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-subtle);
+}
 
+/* On small phones, let it breathe a bit more */
+@media (max-width: 480px) {
+  .pdf-frame {
+    height: 70vh;
+  }
+}
 @media (max-width: 720px) {
   .page-shell {
     padding: 1.25rem 0.9rem 2rem;
