@@ -21,16 +21,19 @@
   </div>
       <p>
     <a class="btn" href="{% static 'docs/writing/Memo of Law.pdf' %}" download>
-      Download Appellate Brief (PDF)
+      Download Lanham Act Memo (PDF)
     </a>
     <a class="btn" href="{% static 'docs/writing/Memo of Law.docx' %}" download>
-      Download Appellate Brief (DOCX)
+      Download Lanham Act Memo (DOCX)
     </a>
   </p>
 
-  <div class="btn-row" style="margin-top:-2rem;justify-content:right;">
+  <div class="btn-row" style="margin-top:1rem;justify-content:right;">
     <a class="btn secondary" href="{% url 'materials' %}">Back to Materials Hub</a>
-    <a class="btn secondary" href="{% url 'appellate_brief' %}">Continue to PDA Appellate Brief</a>
+    <a class="btn secondary" href="{% url 'resume' %}">View Résumé</a>
+    <a class="btn secondary" href="{% url 'writing_samples' %}">View PDA E-Memo</a>
+    <a class="btn secondary" href="{% url 'appellate_brief' %}">View PDA Appellate Brief</a>
 
   </div>
+
 {% endblock %}
