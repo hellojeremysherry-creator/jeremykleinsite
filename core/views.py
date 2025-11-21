@@ -20,6 +20,10 @@ def appellate_brief_view(request):
     """Writing sample: Appellate brief focused on the Pregnancy Discrimination Act."""
     return render(request, "appellate_brief.html")  # 👈 NEW
 
+def memo_of_law_view(request):
+    """Writing sample: Appellate brief focused on the Pregnancy Discrimination Act."""
+    return render(request, "memo_of_law.html")  # 👈 NEW
+
 def materials_view(request):
     """Hub page for résumé + writing samples."""
     return render(request, "materials.html")

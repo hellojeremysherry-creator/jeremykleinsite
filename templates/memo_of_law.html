@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Memorandum of Law — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">Writing Sample — Memorandum of Law (Trademark Confusion Opposition Brief)</div>
+  <p>
+    A memorandum opposing defendants’ motion to dismiss, arguing that “Emerald Greene Design” is
+    a suggestive, protectable mark and that shared eco-friendly branding, geographic proximity,
+    and planned market expansion create a strong likelihood of consumer confusion under the Lanham Act.
+
+  </p>
+
+  <p>
+    <a class="btn" href="{% static 'docs/writing/Memo of Law.pdf' %}" download>
+      Download Appellate Brief (PDF)
+    </a>
+  </p>
+
+  <div style="margin-top:1.25rem;">
+    <embed
+      src="{% static 'docs/writing/Memo of Law.pdf' %}#view=FitH"
+      type="application/pdf"
+      width="100%"
+      height="750px">
+  </div>
+      <p>
+    <a class="btn" href="{% static 'docs/writing/Memo of Law.docx' %}" download>
+      Download Appellate Brief (DOCX)
+    </a>
+  </p>
+
+  <p class="muted" style="margin-top:0.9rem;">
+    The brief is also provided as a Word document for easier annotation and review.
+  </p>
+{% endblock %}

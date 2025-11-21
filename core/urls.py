@@ -17,6 +17,8 @@ urlpatterns = [
 
     path("writing-samples/", views.writing_samples_view, name="writing_samples"),
     path("writing-samples/appellate-brief/", views.appellate_brief_view, name="appellate_brief"),  # 👈 NEW
+    path("writing-samples/memo-of-law/", views.memo_of_law_view, name="memo_of_law"),  # 👈 NEW
+
     path("losp/", views.losp_view, name="losp"),
 
     # NEW: individual LOSP doc pages
