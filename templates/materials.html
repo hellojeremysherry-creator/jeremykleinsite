@@ -14,100 +14,100 @@
 
     <div class="btn-row" style="margin-bottom:1.4rem; justify-content: center;">
     <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'resume' %}">View Résumé</a>
-    <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'writing_samples' %}">View Writing Sample — E-Memo</a>
-    <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'memo_of_law' %}">View Writing Sample — Lanham Act Opposition Memorandum</a>
-    <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'appellate_brief' %}">View Writing Sample — Appellate Brief</a>
+    <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'writing_samples' %}">View PDA E-Memo</a>
+    <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'memo_of_law' %}">View Lanham Act Memo</a>
+    <a class="btn secondary" style="margin-top:0.6rem;" href="{% url 'appellate_brief' %}">View PDA Appellate Brief</a>
     </div>
-
-<!-- A. Résumé -->
-<h3 style="margin-top:1.4rem;">A. Résumé</h3>
-<p style="font-size:0.9rem;color:#e5e7eb;">
-  Current résumé highlighting my 1L coursework, prior professional experience, and focus on
-  supporting small and immigrant-owned businesses in the San Gabriel Valley.
-</p>
-
-<div class="pdf-block">
-  <p class="pdf-label">Résumé (PDF)</p>
-  <embed
-    src="{% static 'docs/Jeremy Klein Resume.pdf' %}#view=FitH"
-    type="application/pdf"
-    width="100%"
-    height="650px">
-  <p>
-    <a class="btn" href="{% static 'docs/Jeremy Klein Resume.pdf' %}" download>
-      Download Résumé (PDF)
-    </a>
-  </p>
-</div>
-
-<!-- B. Writing Sample — E-Memo -->
-<h3 style="margin-top:2.0rem;">B. Writing Sample — Objective E-Memo</h3>
-<p style="font-size:0.9rem;color:#e5e7eb;">
-  An objective e-memo analyzing Pregnancy Discrimination Act accommodation practices, with emphasis on
-  case comparison, statutory interpretation, and neutral application of facts to law.
-</p>
-
-<div class="pdf-block">
-  <p class="pdf-label">PDA E-Memo (PDF)</p>
-  <embed
-    src="{% static 'docs/E-Memo.pdf' %}#view=FitH"
-    type="application/pdf"
-    width="100%"
-    height="650px">
-  <p>
-    <a class="btn" href="{% static 'docs/E-Memo.pdf' %}" download>
-      Download E-Memo (PDF)
-    </a>
-  </p>
-</div>
-
-<!-- C. Writing Sample — Lanham Act Memo -->
-<h3 style="margin-top:2.0rem;">C. Writing Sample — Lanham Act Memo</h3>
-<p style="font-size:0.9rem;color:#e5e7eb;">
-    A memorandum opposing a motion to dismiss, arguing that “Emerald Greene Design”
-    is a protectable Lanham Act mark and that similar branding, close proximity,
-    and planned expansion create a substantial likelihood of consumer confusion.
-</p>
-
-<div class="pdf-block">
-  <p class="pdf-label">Lanham Act Memo (PDF)</p>
-  <embed
-    src="{% static 'docs/writing/Memo of Law.pdf' %}#view=FitH"
-    type="application/pdf"
-    width="100%"
-    height="650px">
-  <p>
-    <a class="btn" href="{% static 'docs/writing/Memo of Law.pdf' %}" download>
-      Download Lanham Act Memo (PDF)
-    </a>
-    <a class="btn secondary" href="{% static 'docs/writing/Memo of Law.docx' %}" download>
-      Download Memo (DOCX)
-    </a>
-  </p>
-</div>
-
-<!-- D. Writing Sample — Appellate Brief -->
-<h3 style="margin-top:2.0rem;">D. Writing Sample — Appellate Brief</h3>
-<p style="font-size:0.9rem;color:#e5e7eb;">
-  An appellate brief addressing Pregnancy Discrimination Act issues, focusing on standards of review,
-  preserved error, and comparison between accommodation of pregnant and non-pregnant employees.
-</p>
-
-<div class="pdf-block">
-  <p class="pdf-label">Appellate Brief (PDF)</p>
-  <embed
-    src="{% static 'docs/Appellate Brief - PDA.pdf' %}#view=FitH"
-    type="application/pdf"
-    width="100%"
-    height="650px">
-  <p>
-    <a class="btn" href="{% static 'docs/Appellate Brief - PDA.pdf' %}" download>
-      Download Appellate Brief (PDF)
-    </a>
-    <a class="btn secondary" href="{% static 'docs/Appellate Brief - PDA.docx' %}" download>
-      Download Brief (DOCX)
-    </a>
-  </p>
-</div>
+{##}
+{#<!-- A. Résumé -->#}
+{#<h3 style="margin-top:1.4rem;">A. Résumé</h3>#}
+{#<p style="font-size:0.9rem;color:#e5e7eb;">#}
+{#  Current résumé highlighting my 1L coursework, prior professional experience, and focus on#}
+{#  supporting small and immigrant-owned businesses in the San Gabriel Valley.#}
+{#</p>#}
+{##}
+{#<div class="pdf-block">#}
+{#  <p class="pdf-label">Résumé (PDF)</p>#}
+{#  <embed#}
+{#    src="{% static 'docs/Jeremy Klein Resume.pdf' %}#view=FitH"#}
+{#    type="application/pdf"#}
+{#    width="100%"#}
+{#    height="650px">#}
+{#  <p>#}
+{#    <a class="btn" href="{% static 'docs/Jeremy Klein Resume.pdf' %}" download>#}
+{#      Download Résumé (PDF)#}
+{#    </a>#}
+{#  </p>#}
+{#</div>#}
+{##}
+{#<!-- B. Writing Sample — E-Memo -->#}
+{#<h3 style="margin-top:2.0rem;">B. Writing Sample — Objective E-Memo</h3>#}
+{#<p style="font-size:0.9rem;color:#e5e7eb;">#}
+{#  An objective e-memo analyzing Pregnancy Discrimination Act accommodation practices, with emphasis on#}
+{#  case comparison, statutory interpretation, and neutral application of facts to law.#}
+{#</p>#}
+{##}
+{#<div class="pdf-block">#}
+{#  <p class="pdf-label">PDA E-Memo (PDF)</p>#}
+{#  <embed#}
+{#    src="{% static 'docs/E-Memo.pdf' %}#view=FitH"#}
+{#    type="application/pdf"#}
+{#    width="100%"#}
+{#    height="650px">#}
+{#  <p>#}
+{#    <a class="btn" href="{% static 'docs/E-Memo.pdf' %}" download>#}
+{#      Download E-Memo (PDF)#}
+{#    </a>#}
+{#  </p>#}
+{#</div>#}
+{##}
+{#<!-- C. Writing Sample — Lanham Act Memo -->#}
+{#<h3 style="margin-top:2.0rem;">C. Writing Sample — Lanham Act Memo</h3>#}
+{#<p style="font-size:0.9rem;color:#e5e7eb;">#}
+{#    A memorandum opposing a motion to dismiss, arguing that “Emerald Greene Design”#}
+{#    is a protectable Lanham Act mark and that similar branding, close proximity,#}
+{#    and planned expansion create a substantial likelihood of consumer confusion.#}
+{#</p>#}
+{##}
+{#<div class="pdf-block">#}
+{#  <p class="pdf-label">Lanham Act Memo (PDF)</p>#}
+{#  <embed#}
+{#    src="{% static 'docs/writing/Memo of Law.pdf' %}#view=FitH"#}
+{#    type="application/pdf"#}
+{#    width="100%"#}
+{#    height="650px">#}
+{#  <p>#}
+{#    <a class="btn" href="{% static 'docs/writing/Memo of Law.pdf' %}" download>#}
+{#      Download Lanham Act Memo (PDF)#}
+{#    </a>#}
+{#    <a class="btn secondary" href="{% static 'docs/writing/Memo of Law.docx' %}" download>#}
+{#      Download Memo (DOCX)#}
+{#    </a>#}
+{#  </p>#}
+{#</div>#}
+{##}
+{#<!-- D. Writing Sample — Appellate Brief -->#}
+{#<h3 style="margin-top:2.0rem;">D. Writing Sample — Appellate Brief</h3>#}
+{#<p style="font-size:0.9rem;color:#e5e7eb;">#}
+{#  An appellate brief addressing Pregnancy Discrimination Act issues, focusing on standards of review,#}
+{#  preserved error, and comparison between accommodation of pregnant and non-pregnant employees.#}
+{#</p>#}
+{##}
+{#<div class="pdf-block">#}
+{#  <p class="pdf-label">Appellate Brief (PDF)</p>#}
+{#  <embed#}
+{#    src="{% static 'docs/Appellate Brief - PDA.pdf' %}#view=FitH"#}
+{#    type="application/pdf"#}
+{#    width="100%"#}
+{#    height="650px">#}
+{#  <p>#}
+{#    <a class="btn" href="{% static 'docs/Appellate Brief - PDA.pdf' %}" download>#}
+{#      Download Appellate Brief (PDF)#}
+{#    </a>#}
+{#    <a class="btn secondary" href="{% static 'docs/Appellate Brief - PDA.docx' %}" download>#}
+{#      Download Brief (DOCX)#}
+{#    </a>#}
+{#  </p>#}
+{#</div>#}
 
 {% endblock %}

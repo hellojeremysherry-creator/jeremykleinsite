@@ -5,12 +5,9 @@
 
 {% block content %}
   <div class="section-title">Résumé</div>
-  <p>You can review my résumé below or download a copy as a PDF.</p>
-
-  <p>
-    <a class="btn" href="{% static 'docs/Jeremy Klein Resume.pdf' %}" download>
-      Download Résumé (PDF)
-    </a>
+  <p style="font-size:0.9rem;color:#e5e7eb;">
+  Current résumé highlighting my 1L coursework, prior professional experience, and focus on
+  supporting small and immigrant-owned businesses in the San Gabriel Valley.
   </p>
 
   <p style="font-size:0.85rem; color:#6b7280; margin-top:0.75rem;">
@@ -23,5 +20,17 @@
       type="application/pdf"
       width="100%"
       height="750px">
+  </div>
+<p>
+<a class="btn" href="{% static 'docs/Jeremy Klein Resume.pdf' %}" download>
+  Download Résumé (PDF)
+</a>
+</p>
+  <div class="btn-row" style="margin-top:-2rem;justify-content:right;">
+    <a class="btn secondary" href="{% url 'materials' %}">Back to Materials Hub</a>
+    <a class="btn secondary" href="{% url 'writing_samples' %}">View PDA E-Memo</a>
+    <a class="btn secondary" href="{% url 'memo_of_law' %}">View Lanham Act Memo</a>
+    <a class="btn secondary" href="{% url 'appellate_brief' %}">View PDA Appellate Brief</a>
+
   </div>
 {% endblock %}

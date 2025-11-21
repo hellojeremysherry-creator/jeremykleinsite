@@ -10,17 +10,24 @@
     the Pregnancy Discrimination Act were applied equally to similarly limited employees.
   </p>
 
-  <p>
-    <a class="btn" href="{% static 'docs/E-Memo.pdf' %}" download>
-      Download E-Memo Sample (PDF)
-    </a>
-  </p>
-
   <div style="margin-top:1.25rem;">
     <embed
       src="{% static 'docs/E-Memo.pdf' %}#view=FitH"
       type="application/pdf"
       width="100%"
       height="750px">
+  </div>
+
+  <p>
+    <a class="btn" href="{% static 'docs/E-Memo.pdf' %}" download>
+      Download E-Memo Sample (PDF)
+    </a>
+
+  <div class="btn-row" style="margin-top:-2.5rem;justify-content:right;">
+    <a class="btn secondary" href="{% url 'materials' %}">Back to Materials Hub</a>
+    <a class="btn secondary" href="{% url 'resume' %}">View Résumé</a>
+    <a class="btn secondary" href="{% url 'memo_of_law' %}">View Trademark Memo</a>
+    <a class="btn secondary" href="{% url 'appellate_brief' %}">View PDA Appellate Brief</a>
+
   </div>
 {% endblock %}

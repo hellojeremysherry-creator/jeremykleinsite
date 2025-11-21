@@ -12,12 +12,6 @@
 
   </p>
 
-  <p>
-    <a class="btn" href="{% static 'docs/writing/Memo of Law.pdf' %}" download>
-      Download Appellate Brief (PDF)
-    </a>
-  </p>
-
   <div style="margin-top:1.25rem;">
     <embed
       src="{% static 'docs/writing/Memo of Law.pdf' %}#view=FitH"
@@ -26,12 +20,17 @@
       height="750px">
   </div>
       <p>
+    <a class="btn" href="{% static 'docs/writing/Memo of Law.pdf' %}" download>
+      Download Appellate Brief (PDF)
+    </a>
     <a class="btn" href="{% static 'docs/writing/Memo of Law.docx' %}" download>
       Download Appellate Brief (DOCX)
     </a>
   </p>
 
-  <p class="muted" style="margin-top:0.9rem;">
-    The brief is also provided as a Word document for easier annotation and review.
-  </p>
+  <div class="btn-row" style="margin-top:-2rem;justify-content:right;">
+    <a class="btn secondary" href="{% url 'materials' %}">Back to Materials Hub</a>
+    <a class="btn secondary" href="{% url 'appellate_brief' %}">Continue to PDA Appellate Brief</a>
+
+  </div>
 {% endblock %}
