@@ -34,7 +34,7 @@ urlpatterns = [
 # NEW: Section C — Official LOSP forms
     path("losp/forms/notice-intent/", views.losp_notice_intent_view, name="losp_notice_intent"),
     path("losp/forms/supervising-attorney/", views.losp_supervisor_decl_view, name="losp_supervisor_decl"),
-    path("losp/forms/semiannual-cover/", views.losp_semi_cover_view, name="losp_semi_cover"),
+    # path("losp/forms/semiannual-cover/", views.losp_semi_cover_view, name="losp_semi_cover"),
     path("losp/forms/semiannual-detail/", views.losp_semi_detail_view, name="losp_semi_detail"),
 
     # NEW: Section D — Legal authority

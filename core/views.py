@@ -66,9 +66,9 @@ def losp_supervisor_decl_view(request):
     """Standalone page for the Supervising Attorney / Judge Declaration."""
     return render(request, "losp_supervisor_decl.html")
 
-def losp_semi_cover_view(request):
-    """Standalone page for the Semiannual Report Cover Sheet."""
-    return render(request, "losp_semi_cover.html")
+# def losp_semi_cover_view(request):
+#     """Standalone page for the Semiannual Report Cover Sheet."""
+#     return render(request, "losp_semi_cover.html")
 
 def losp_semi_detail_view(request):
     """Standalone page for the Semiannual Report Detail Form."""
