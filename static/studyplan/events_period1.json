@@ -1,0 +1,23 @@
+{
+  "label": "Period 1 — Months 1–6",
+  "events": [
+    {
+      "title": "Contracts — Offer & Acceptance",
+      "start": "2025-01-03",
+      "color": "#93c5fd",
+      "category": "Doctrine"
+    },
+    {
+      "title": "Torts — Negligence: Duty/Breach",
+      "start": "2025-01-04",
+      "color": "#fca5a5",
+      "category": "Doctrine"
+    },
+    {
+      "title": "Supervision (1 hour)",
+      "start": "2025-01-04",
+      "color": "#a5b4fc",
+      "category": "Supervision"
+    }
+  ]
+}

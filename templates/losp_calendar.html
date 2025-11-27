@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Study Calendar — Jeremy Klein{% endblock %}
+
+{% block content %}
+  <div class="section-title">24-Month LOSP Study Calendar</div>
+
+  <p class="muted" style="margin-bottom:1.2rem;">
+    This calendar reflects my day-to-day LOSP study plan: doctrinal topics, reading,
+    supervision hours, and exam prep. The 24-month curriculum is divided into four
+    six-month periods; this view currently shows Period 1.
+  </p>
+
+  <div id="calendar"></div>
+
+  <!-- FullCalendar assets -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script>
+
+  <style>
+    #calendar {
+      margin-top: 1.25rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .fc .fc-toolbar-title {
+      color: #f9fafb;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .fc .fc-button-primary {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: #4b5563;
+    }
+
+    .fc .fc-button-primary:hover {
+      background: #f9fafb;
+      color: #020617;
+      border-color: #e5e7eb;
+    }
+
+    .fc-daygrid-day-number {
+      color: #e5e7eb;
+    }
+
+    .fc-event {
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.78rem;
+      border: none;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarEl = document.getElementById('calendar');
+
+      // Fetch the JSON from static files
+      fetch("{% static 'studyplan/events_period1.json' %}")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Failed to load events JSON");
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Support both { events: [...] } and bare [...] formats
+          const events = Array.isArray(data) ? data : (data.events || []);
+
+          const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            height: 'auto',
+            headerToolbar: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,listWeek'
+            },
+            events: events
+          });
+
+          calendar.render();
+        })
+        .catch(err => {
+          console.error(err);
+          calendarEl.innerHTML = `
+            <p style="color:#fca5a5;font-size:0.9rem;">
+              There was a problem loading the study calendar events.
+              Please check <code>static/studyplan/events_period1.json</code>.
+            </p>
+          `;
+        });
+    });
+  </script>
+{% endblock %}

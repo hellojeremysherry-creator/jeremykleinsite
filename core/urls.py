@@ -41,5 +41,9 @@ urlpatterns = [
     path("losp/rules/title4/", views.losp_rules_title4_view, name="losp_rules_title4"),
     path("losp/rules/bpc-6060/", views.losp_bpc_6060_view, name="losp_bpc_6060"),
     path("losp/portal-defs/", views.losp_portal_defs_view, name="losp_portal_defs"),
+
+    # NEW: Study Calendar
+    path("losp/calendar/", views.losp_calendar_view, name="losp_calendar"),
+
 ]
 
